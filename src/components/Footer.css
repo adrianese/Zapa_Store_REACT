@@ -1,0 +1,274 @@
+
+/* Footer.css */
+
+/* Sección principal */
+.footer .seccion {
+  background-color: #333;;
+  padding: 3rem 2rem;
+  border-top: 1px solid #ccc;
+  margin-top: 4rem;
+}
+
+/* Navegación */
+.footer-nav {
+  margin-bottom: 2rem;
+}
+
+.navegacion {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.navegacion a {
+  color: #000;
+  font-size: 1.6rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navegacion a:hover {
+  color: #71b100;
+}
+
+/* Carrito */
+.carrito {
+  font-weight: bold;
+  color: #de87dc;
+}
+/*
+#carrito-contador {
+  background-color: #de87dc;
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+}*/
+
+/* Copyright y redes */
+.contenedor-copy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ddd;
+}
+
+.copyright {
+  font-size: 1.4rem;
+  color: #333;
+  margin: 0;
+}
+
+/* Redes sociales */
+.redes-sociales {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.icono {
+  width: 2.4rem;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.icono:hover {
+  transform: scale(1.1);
+}
+
+.icono-sobre {
+  filter: invert(20%);
+}
+
+.bi-github {
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.bi-github:hover {
+  color: #71b100;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contenedor-copy {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .navegacion {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* copy naranja */
+.contenedor-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #e08709;
+  padding: 1.2rem 10rem;
+  /* Espaciado interno */
+  flex-wrap: wrap;
+}
+
+/* texto centrado en 480px */
+.copyright {
+  color: #ffffff;
+  text-align: center;
+  flex: 1;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.icono-sobre {
+  filter: invert(10%);
+}
+
+/* Iconos de Contacto (correo y GitHub) */
+.iconos-contacto {
+  display: flex;
+  gap: 1.5rem;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.iconos-contacto a img,
+.iconos-contacto a svg {
+  width: 2.5rem;
+  /* Tamaño de los iconos de contacto */
+  height: 2.5rem;
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+
+.iconos-contacto a:hover img,
+.iconos-contacto a:hover svg {
+  transform: translateY(-3px);
+  filter: invert(70%);
+  transform: scale(1.2);
+}
+
+.footer {
+  padding: 2.5rem;
+  background-color: #333333;
+  color: #FFFFFF;
+}
+
+.seccion {
+  margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.navegacion {
+  display: flex;
+  align-items: center;
+}
+
+.navegacion a:hover {
+  color: #eba543;
+}
+
+.footer-principal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .footer-principal {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.navegacion-footer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.navegacion-footer a {
+  color: var(--color-blanco);
+  text-decoration: none;
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
+}
+
+.navegacion-footer a:hover {
+  color: var(--color-naranja);
+}
+
+@media (min-width: 768px) {
+  .navegacion-footer {
+    flex-direction: row;
+    gap: 2.5rem;
+  }
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-info {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+.titulo-pagina {
+  font-size: 3rem;
+  margin: 0;
+  color: var(--color-blanco);
+  font-weight: 700;
+}
+
+.titulo-footer {
+  font-size: 3rem;
+  margin: 0;
+  color: var(--color-blanco);
+  font-weight: 300;
+}
+
+.redes-sociales {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.redes-sociales a img,
+.redes-sociales a svg {
+  width: 2.8rem;
+  height: 2.8rem;
+  transition: transform 0.3s ease;
+}
+
+.redes-sociales a:hover img,
+.redes-sociales a:hover svg {
+  transform: translateY(-3px);
+}
+
+@media (min-width: 768px) {
+  .contenedor-copy {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1.2rem 10rem;
+  }
+}

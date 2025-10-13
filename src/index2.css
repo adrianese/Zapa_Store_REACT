@@ -1,0 +1,282 @@
+
+
+/* Pages.css */
+
+/* Estructura general */
+.seccion {
+  padding: 4rem 2rem;
+}
+
+.contenedor {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Títulos */
+h2 {
+  font-size: 3rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Listado de productos en carrito */
+ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+ul li {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Total */
+p strong {
+  font-weight: bold;
+}
+
+/* Video banner */
+.video {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+}
+
+.video video {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  max-height: 400px;
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+}
+
+/* Contenedor de anuncios */
+.contenedor-anuncios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Botón comparar flotante */
+.boton-comparar-flotante {
+  position: fixed;
+  bottom: 6rem;
+  right: 2rem;
+  background-color: #de87dc;
+  color: #fff;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.boton-comparar-flotante:hover {
+  background-color: #c86cc8;
+}
+
+/* Botón ver carrito flotante */
+.boton-ver-carrito-flotante {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #71b100;
+  color: #fff;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.boton-ver-carrito-flotante:hover {
+  background-color: #5a8f00;
+}
+
+/* Flecha flotante */
+.flotante {
+  width: 4.5rem;
+  height: 4.5rem;
+  position: fixed;
+  bottom: 18rem;
+  right: 2rem;
+  background-color: #71b100;
+  border-radius: 50%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  transform: translateY(20px);
+  z-index: 1000;
+}
+
+.flotante.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.flotante img {
+  width: 2.4rem;
+  margin: 0.7rem 1.1rem 0;
+  filter: invert(20%);
+}
+
+/* Oculto */
+.oculto {
+  display: none;
+}
+
+/* Responsive ajustes */
+@media (max-width: 768px) {
+
+  .boton-comparar-flotante,
+  .boton-ver-carrito-flotante {
+    width: 90%;
+    right: 5%;
+    bottom: 2rem;
+    font-size: 1.4rem;
+    padding: 1rem;
+  }
+
+  .contenedor-anuncios {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.8;
+}
+
+/*contenedor basico */
+.contenedor {
+  width: 95%;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+img,
+picture {
+  width: 100%;
+  display: block;
+}
+
+/* FONTS */
+h1,
+h2,
+h3 {
+  font-family: 'Lato', sans-serif;
+  margin: 1.5rem 0;
+  font-weight: 300;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3.8rem;
+}
+
+h2 {
+  font-size: 3.4rem;
+}
+
+h3 {
+  font-size: 3rem;
+}
+
+h4 {
+  font-size: 2.6rem;
+}
+
+p {
+  color: #000000;
+  font-size: 2rem;
+}
+
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  margin-right: 2rem;
+  font-size: 1.4rem;
+}
+
+/* Tamaño de Media Queries
+telefono: 480px;
+tablet: 768px;
+desktop: 1024px; */
+p {
+  font-size: 1.5rem;
+  color: #4d454d;
+}
+
+/* Media query para cambiar fondo por rangos de ancho */
+@media (max-width: 480px) {
+  body {
+    background-color: #fce8ca;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  h4 {
+    font-size: 1.6rem;
+  }
+
+  p {
+    color: #000000;
+    font-size: 1.5rem;
+  }
+}
+
+/*Estos estilos se aplicarán cuando el ancho de la pantalla sea mayor o igual a 768px */
+@media (min-width: 769px) {
+  a {
+    font-size: 1.8rem;
+  }
+}
+
+/* Extra desktop: desde 951px, 4 columnas */
+@media (min-width: 950px) {
+  body {
+    background-color: #fce8ca;
+  }
+}
