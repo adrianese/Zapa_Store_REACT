@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Formulario.css";
 
@@ -15,10 +16,10 @@ const Formulario = ({
 }) => {
   const formRef = useRef(null);
   const navigate = useNavigate();
+  const [enviado, setEnviado] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const formData = new FormData(formRef.current);
 
     try {
@@ -31,8 +32,9 @@ const Formulario = ({
       });
 
       if (response.ok) {
-        if (onSuccess) onSuccess(); // vacía el carrito
-        navigate("/"); // redirige al inicio
+        setEnviado(true);
+        if (onSuccess) onSuccess();
+        navigate("/");
       } else {
         alert("Hubo un error al enviar el formulario.");
       }
@@ -59,6 +61,7 @@ const Formulario = ({
                 id={campo.name}
                 placeholder={campo.placeholder}
                 required={campo.required}
+                autoComplete="on"
               />
             </div>
           ))}
@@ -77,29 +80,38 @@ const Formulario = ({
 
         {incluirSuscripcion && (
           <fieldset>
-            <legend>Desea Recibir Novedades de productos</legend>
-            <p>Elija Una Opción</p>
-            <div className="forma-contacto">
-              <label htmlFor="contacto-suscripcion">Suscribirme</label>
-              <input
-                type="radio"
-                value="suscribir"
-                name="contacto"
-                id="contacto-suscripcion"
-              />
+            <legend>Desea recibir novedades</legend>
+            <p>Elija una opción</p>
+            <div className="grupo-radio">
+              <label className="radio-label" htmlFor="contacto-suscripcion">
+                <input
+                  type="radio"
+                  value="suscribir"
+                  name="contacto"
+                  id="contacto-suscripcion"
+                />
+                Suscribirme
+              </label>
 
-              <label htmlFor="contacto-desuscripcion">Desuscribirme</label>
-              <input
-                type="radio"
-                value="desuscribir"
-                name="contacto"
-                id="contacto-desuscripcion"
-              />
+              <label className="radio-label" htmlFor="contacto-desuscripcion">
+                <input
+                  type="radio"
+                  value="desuscribir"
+                  name="contacto"
+                  id="contacto-desuscripcion"
+                />
+                Desuscribirme
+              </label>
             </div>
           </fieldset>
         )}
 
-        <input type="submit" value={botonTexto} className="boton-verde" />
+        <input
+          type="submit"
+          value={botonTexto}
+          className="boton-verde"
+          disabled={enviado}
+        />
       </form>
     </section>
   );

@@ -79,10 +79,10 @@ const CarritoModal = ({
             </p>
 
             <div className="acciones-carrito">
-              <button className="boton-amarillo-block" onClick={onVaciar}>
+              <button className="boton-verde" onClick={onVaciar}>
                 Vaciar Carrito
               </button>
-              <button className="boton-amarillo-block" onClick={onConfirmar}>
+              <button className="boton-verde" onClick={onConfirmar}>
                 Confirmar Compra
               </button>
             </div>

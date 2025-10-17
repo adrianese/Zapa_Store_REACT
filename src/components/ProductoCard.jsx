@@ -1,27 +1,17 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import "./ProductoCard.css";
 
 const ProductoCard = ({
   producto,
-  seleccionado,
   enCarrito,
-  onSeleccionar,
   onToggleCarrito
 }) => {
   const [talle, setTalle] = useState('');
 
   return (
     <div className="producto">
-      <div className="encabezado-card">
-        <label className="comparar-check">
-          <input
-            type="checkbox"
-            checked={seleccionado}
-            onChange={() => onSeleccionar(producto.id)}
-          />
-          comparar
-        </label>
-      </div>
+      <div className="encabezado-card"></div>
 
       <div className="anuncio">
         <img
@@ -29,19 +19,22 @@ const ProductoCard = ({
           alt={producto.nombre}
           onError={(e) => {
             e.target.onerror = null;
-            e.target.src = 'img/default.png';
+            e.target.src = "img/default.png";
           }}
         />
 
         <div className="contenido-anuncio">
+          <Link to={`/producto/${producto.id}`} className="boton-detalle">
+            Ver Detalles
+          </Link>
           <h2 className="producto-nombre">{producto.nombre.toUpperCase()}</h2>
-          <p className="modelo">modelo: {producto.imagen.split('.')[0]}</p>
-          <p className="precio">$ {producto.precio.toLocaleString('es-AR')}</p>
+          <p className="modelo">modelo: {producto.imagen.split(".")[0]}</p>
+          <p className="precio">$ {producto.precio.toLocaleString("es-AR")}</p>
 
           <div className="iconos-caracteristicas icono-alinear">
             <div className="icono-actividad">
               <img
-                src={`img/${producto.actividad.replaceAll(' ', '_')}.svg`}
+                src={`img/${producto.actividad.replaceAll(" ", "_")}.svg`}
                 alt={producto.actividad}
                 title={producto.actividad}
               />
@@ -49,11 +42,11 @@ const ProductoCard = ({
             </div>
             <div className="estado-disponible">
               <img
-                src={`img/${producto.disponible ? 'true' : 'false'}.svg`}
+                src={`img/${producto.disponible ? "true" : "false"}.svg`}
                 alt={producto.disponible}
               />
               <p className="modelo">
-                {producto.disponible ? 'disponible' : 'no disponible'}
+                {producto.disponible ? "disponible" : "no disponible"}
               </p>
             </div>
           </div>
@@ -81,12 +74,12 @@ const ProductoCard = ({
           <button
             className="boton-amarillo-block"
             style={{
-              backgroundColor: enCarrito ? '#ffd6cc' : '#e08709',
-              color: enCarrito ? '#333' : '#fff'
+              backgroundColor: enCarrito ? "#f84c4cff" : "#e08709",
+              color: enCarrito ? "#333" : "#fff",
             }}
             onClick={() => onToggleCarrito(producto, talle)}
           >
-            {enCarrito ? 'Quitar del carrito' : 'Agregar al carrito'}
+            {enCarrito ? "Quitar del carrito" : "Agregar al carrito"}
           </button>
         </div>
       </div>

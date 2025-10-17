@@ -15,6 +15,7 @@ body {
 .contenedor {
     width: 95%;
     max-width: 120rem;
+    min-height: 15rem;
     margin: 0 auto;
 }
 img,
@@ -46,10 +47,11 @@ h3 {
 h4 {
     font-size: 2.6rem;
 }
-p{
+/*p{
     color: #000000;
     font-size: 2rem;
-}
+}*/
+
  /*HEADER */
 .header {
     background-color: #333333;
@@ -157,10 +159,12 @@ p{
     width: 80%;
     padding:3rem; 
 }
-/* Productos*/
+ Productos
 .seccion{
+  min-height: 10rem;
     margin-bottom:2.5rem;
     margin-top:2.5rem;
+    background-color: #fce8ca;;
 }
 .precio{
     color:#71b100;
@@ -176,42 +180,6 @@ font-size: 2rem;
     font-size: 1.4rem;
     margin: 0 auto;
     text-align: center;
-}
-.boton-amarillo-block{
-    background-color:#e08709;
-    border:none;
-    color:#fff;
-    display:block;
-    font-weight:700;
-    margin-top:1.5rem;
-    padding:1rem 3rem;
-    text-align:center;
-    text-decoration:none;
-}
-.boton-amarillo-block:hover{
-    background-color:#c77808;
-    cursor:pointer;
-}
-.boton-verde{
-    background-color:#71b100;
-    border:none;
-    color:#fff;
-    display:inline-block;
-    font-weight:700;
-    margin-top:2.5rem;
-    padding:1rem 3rem;
-    text-align:center;
-    text-decoration:none
-}
-.boton-redondeado{
-    border-radius: 1rem;
-    padding: 1.5rem 3rem;
-    margin:2.5rem 0rem;
-    align-self: center;
-}
-.boton-verde:hover{
-    background-color:#619800;
-    cursor:pointer
 }
 .contenido-anuncio{
     padding:2rem;
@@ -238,49 +206,6 @@ font-size: 2rem;
  padding: 1rem;
  margin: 2rem;
  background-color: #71b100;
-}
-/* formulario */
-.formulario{ 
-    width: 60%;
-    margin: auto;
-    p{
-        font-size: 1.4rem;
-        color: #333333;
-        margin: 2rem 0 0 0 ;
-    }
-    legend{
-        font-size: 2rem;
-        color: #333333;
-    }
-    label{
-        font-weight: bold;
-        text-transform: uppercase;
-        display: block;
-    }
-    input:not([type="submit"]),
-    textarea,
-    select {
-        padding: 1rem;
-        display: block;
-        width: 100%;
-        background-color: #eee;
-        border: 1px solid #4d454d;
-        border-radius: 1rem;
-        margin-bottom: 2rem;
-    }
-    textarea{
-        height: 20rem;
-    }
-    .forma-contacto{
-        max-width: 30rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    input[type="radio"]{
-        margin: 0;
-        width: auto;
-    }
 }
 
 /* Nosotros */
@@ -457,7 +382,7 @@ h4 {
 }
 p{
     color: #000000;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 }
 
@@ -659,15 +584,7 @@ p{
     }
 }
 
-#carrito-contador {
- /* color: #f53636;*/
-  font-size: 1.8rem;
-  font-weight:bolder;
-  padding: 0.2rem 1.6rem;
-  position: absolute;
-  top: -12px;
-  right: -12px;
-}
+
 .carrito {
   position: relative;
   display: inline-block;
@@ -851,3 +768,89 @@ p{
 .oculto {
   display: none;
 }
+
+.boton-verde {
+  background-color: #71b100;
+  margin: 2rem;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: center;
+}
+
+
+
+/*///carrito /////*/
+
+
+
+
+
+.lista-carrito {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.item-carrito {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+
+
+
+.detalle-carrito-linea {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  align-items: center;
+  flex: 1;
+}
+
+.marca-modelo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.precio-item {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.talle-item {
+  font-size: 1.4rem;
+  color: #333;
+  font-weight: bold;
+}
+
+
+
+.total-carrito {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+}
+
+.precio-total {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.acciones-carrito {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+
+

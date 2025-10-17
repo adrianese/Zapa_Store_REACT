@@ -22,7 +22,7 @@
 }
 
 .navegacion a {
-  color: #000;
+  color: #CCC;
   font-size: 1.6rem;
   text-decoration: none;
   font-weight: 500;
@@ -38,15 +38,7 @@
   font-weight: bold;
   color: #de87dc;
 }
-/*
-#carrito-contador {
-  background-color: #de87dc;
-  color: #fff;
-  padding: 0.2rem 0.6rem;
-  border-radius: 12px;
-  margin-left: 0.5rem;
-  font-size: 1.2rem;
-}*/
+
 
 /* Copyright y redes */
 .contenedor-copy {
@@ -92,7 +84,7 @@
 }
 
 .bi-github:hover {
-  color: #71b100;
+  color: #000; /* Mantiene el color original en hover */
 }
 
 /* Responsive */
@@ -130,9 +122,7 @@
   font-size: 1.2rem;
 }
 
-.icono-sobre {
-  filter: invert(10%);
-}
+
 
 /* Iconos de Contacto (correo y GitHub) */
 .iconos-contacto {

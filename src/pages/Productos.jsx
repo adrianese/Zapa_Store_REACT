@@ -55,11 +55,11 @@ const Productos = () => {
   }, []);
 
   // Toggle selección para comparación
-  const toggleSeleccion = (id) => {
+  /* const toggleSeleccion = (id) => {
     setSeleccionados((prev) =>
       prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
     );
-  };
+  }; */
 
   // Toggle carrito
   const toggleCarrito = (producto, talle) => {
@@ -95,7 +95,7 @@ const Productos = () => {
   );
 
   return (
-    <div className="seccion">
+    <div className="contenedor seccion">
       <Buscador productos={productos} onFiltrar={setProductosFiltrados} />
 
       <div className="contenedor-anuncios">
@@ -105,7 +105,7 @@ const Productos = () => {
             producto={producto}
             seleccionado={seleccionados.includes(producto.id)}
             enCarrito={carrito.some((p) => p.id === producto.id)}
-            onSeleccionar={toggleSeleccion}
+            /* onSeleccionar={toggleSeleccion} */
             onToggleCarrito={toggleCarrito}
           />
         ))}

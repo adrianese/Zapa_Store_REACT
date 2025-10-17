@@ -63,14 +63,6 @@
     color: #de87dc;
 }
 
-#carrito-contador {
-   /* background-color: #f40a0a;*/
-    color: #fff;
-    padding: 0.2rem 0.6rem;
-    border-radius: 12px;
-    margin-left: 0.5rem;
-    font-size: 1.2rem;
-}
 
 /* Responsive */
 @media (min-width: 768px) {
@@ -189,11 +181,24 @@
     }
 }
 
+@media (min-width: 480px) and (max-width: 768px) {
+    .barra {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    .navegacion {
+        justify-content: center;
+        width: 100%;
+        flex-wrap: nowrap;
+    }
+}
+
 #carrito-contador {
     color: #f53636;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bolder;
-    padding: 0.2rem 1.6rem;
+    padding: 0.3rem 1.6rem;
     position: absolute;
     top: -12px;
     right: -12px;
@@ -202,4 +207,18 @@
 .carrito {
     position: relative;
     display: inline-block;
+}
+
+/* Extra desktop: desde 951px, 4 columnas */
+@media (min-width: 950px) {
+    body {
+        background-color: #fce8ca;
+    }
+    .barra {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        padding-top: 3rem;
+        justify-content: space-between;
+    }
 }

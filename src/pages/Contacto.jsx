@@ -1,9 +1,18 @@
 import Formulario from "../components/Formulario";
-
+import estanteImg from "/img/estante3903371.jpg";
 
 function Contacto() {
   return (
     <main className="contenedor seccion">
+      <picture>
+        <source srcSet={estanteImg} type="image/jpeg" />
+        <img
+          src={estanteImg}
+          alt="Contacto"
+          className="contacto-img"
+          loading="lazy"
+        />
+      </picture>
       <Formulario
         titulo="Llene el Formulario de Contacto"
         action="https://formspree.io/f/xrbkooqa"
@@ -34,10 +43,9 @@ function Contacto() {
         botonTexto="Enviar"
         incluirSuscripcion={true}
       />
-      ;{/* contenido del formulario */}
+      {/* contenido del formulario */}
     </main>
   );
 }
-
 
 export default Contacto;

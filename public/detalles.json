@@ -1,0 +1,43 @@
+{
+  "productos_deportivos": [
+    {
+      "marca": "Adedos",
+      "actividad_apta": [
+        "La marca ADEDOS redefine el confort urbano con zapatillas diseñadas para el uso diario. Su estética moderna y líneas limpias las convierten en el complemento perfecto para quienes buscan estilo sin sacrificar funcionalidad.",
+        "Ideales para caminar largas distancias o pasar todo el día en movimiento, las zapatillas ADEDOS combinan ligereza y soporte anatómico, brindando una experiencia de uso suave y sin fatiga.",
+        "Su diseño elegante permite transicionar sin esfuerzo entre entornos casuales y profesionales, lo que las convierte en la opción preferida para quienes valoran versatilidad y presencia estética."
+      ],
+      "beneficios_materiales": [
+        "Fabricadas con materiales sintéticos de alta calidad y mallas transpirables, las zapatillas ADEDOS ofrecen una excelente ventilación y resistencia al desgaste cotidiano.",
+        "La suela de EVA ultraliviana proporciona amortiguación continua, reduciendo el impacto en cada paso y favoreciendo la postura durante jornadas prolongadas.",
+        "El acabado textil antimicrobiano y los refuerzos en zonas clave aseguran durabilidad, higiene y un calce cómodo desde el primer uso."
+      ]
+    },
+    {
+      "marca": "Niko",
+      "actividad_apta": [
+        "Las zapatillas NIKO están pensadas para corredores que exigen rendimiento y estilo. Su estructura dinámica favorece el impulso y la estabilidad en cada zancada.",
+        "Con colores vibrantes y diseño aerodinámico, se adaptan tanto a entrenamientos intensos como a competencias, brindando una sensación de ligereza y control.",
+        "La tecnología de absorción de impacto y tracción avanzada permite correr en distintos terrenos sin comprometer la seguridad ni el confort."
+      ],
+      "beneficios_materiales": [
+        "Construidas con tejidos técnicos de alta resistencia y refuerzos termosellados, las zapatillas NIKO soportan el uso exigido sin perder flexibilidad.",
+        "La entresuela con retorno de energía y la plantilla ergonómica maximizan el rendimiento en cada sesión de running.",
+        "Su sistema de ventilación zonificada y el talón reforzado aseguran frescura, estabilidad y durabilidad incluso en condiciones extremas."
+      ]
+    },
+    {
+      "marca": "Under A",
+      "actividad_apta": [
+        "La marca UNDER A es sinónimo de aventura. Sus zapatillas de trekking están diseñadas para enfrentar terrenos difíciles, climas cambiantes y largas travesías.",
+        "Con una estructura robusta y suela de agarre multidireccional, ofrecen seguridad en cada paso, ya sea en montaña, bosque o senderos rocosos.",
+        "Importadas y testeadas en condiciones extremas, las zapatillas UNDER A son la elección ideal para quienes buscan durabilidad y confianza en cada expedición."
+      ],
+      "beneficios_materiales": [
+        "El cuero sintético impermeable y las costuras selladas protegen contra humedad, barro y abrasión, manteniendo el pie seco y seguro.",
+        "La suela Vibratech con tecnología antideslizante proporciona tracción superior en superficies irregulares y mojadas.",
+        "El interior acolchado con espuma de memoria y el sistema de ajuste reforzado garantizan comodidad prolongada y soporte estructural en caminatas exigentes."
+      ]
+    }
+  ]
+}

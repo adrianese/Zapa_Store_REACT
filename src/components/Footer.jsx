@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+
 import { Link } from "react-router-dom";
 import { CarritoContext } from "../context/CarritoContext";
 import "./Footer.css";
 
 function Footer() {
-  const { carrito } = useContext(CarritoContext);
+  /*const { carrito } = useContext(CarritoContext);*/
 
   return (
     <footer className="footer seccion">
@@ -14,7 +14,6 @@ function Footer() {
           <Link to="/productos">Productos</Link>
           <Link to="/nosotros">Nosotros</Link>
           <Link to="/contacto">Contacto</Link>
-         
         </nav>
       </div>
 
@@ -30,14 +29,13 @@ function Footer() {
           >
             <img
               className="icono icono-sobre"
-              loading="lazy"
               src="img/envelope-regular.svg"
               alt="Correo electrónico"
             />
           </a>
 
           <a
-            href="https://github.com/adrianese/zapa_store_js"
+            href="https://github.com/adrianese/Zapa_Store_REACT"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub de Adrianese"
