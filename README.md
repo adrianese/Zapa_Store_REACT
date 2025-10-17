@@ -1,3 +1,11 @@
+⚠️ Disclaimer
+Este proyecto, Zapa-Store-React, ha sido desarrollado exclusivamente con fines educativos y demostrativos. No está diseñado para entornos de producción. El código puede contener fallas de seguridad, lógica no optimizada y carece de validaciones exhaustivas y controles de acceso.
+No se recomienda su uso en aplicaciones reales sin una auditoría completa, pruebas rigurosas y fortalecimiento de seguridad.
+
+Sitios Web:
+https://react-proyecto-czfhznp11-adrianeses-projects.vercel.app/
+https://react-proyecto-nu.vercel.app/
+
 # Proyecto E-commerce con React
 
 Este es el repositorio de un proyecto de E-commerce desarrollado con React. La aplicación simula una tienda en línea, permitiendo a los usuarios explorar un catálogo de productos, filtrarlos según sus necesidades, compararlos y gestionar un carrito de compras.
@@ -16,14 +24,9 @@ La aplicación está diseñada para ser una plataforma de comercio electrónico 
 *   **Comparador de Productos:** Una funcionalidad que permite a los usuarios seleccionar varios productos y ver sus especificaciones lado a lado en una vista dedicada.
 *   **Carrito de Compras:** Los usuarios pueden agregar productos a un carrito, ver un resumen de su selección y simular el proceso de compra.
 *   **Páginas Estáticas:** Incluye secciones informativas como "Nosotros" y un formulario de "Contacto".
+*   **Páginas Dinámicas:** Incluye secciones informativas con Detalles de Productos y un formulario de "Inicio de Sesión".
 *   **Diseño Responsivo:** La interfaz se adapta a diferentes tamaños de pantalla, desde dispositivos móviles hasta computadoras de escritorio, gracias al uso de Media Queries.
 
-## Ventajas del Proyecto
-
-*   **Modularidad:** Al estar construido con React, el proyecto se beneficia de una alta modularidad. Componentes como `Boton` y `Buscador` son reutilizables y pueden ser mantenidos de forma independiente, lo que facilita la escalabilidad y las actualizaciones.
-*   **Mantenibilidad:** La separación de la lógica (componentes JSX), los estilos (archivos CSS dedicados) y la estructura (HTML en `public`) hace que el código sea más limpio y fácil de mantener.
-*   **Experiencia de Usuario Dinámica:** React permite crear una interfaz de usuario rápida y reactiva. Las acciones como filtrar productos o agregarlos al carrito se reflejan instantáneamente sin necesidad de recargar la página completa.
-*   **Código Optimizado:** El proyecto está estructurado para evitar la redundancia de código, centralizando los estilos globales y manteniendo los estilos específicos a nivel de componente.
 
 ## Estructura del Proyecto
 
@@ -44,30 +47,3 @@ ReactProyect/
     └── index.js        # Punto de entrada de la aplicación
 ```
 
-## Uso e Instalación
-
-Para ejecutar este proyecto en un entorno de desarrollo local, sigue estos pasos:
-
-1.  **Clonar el repositorio:**
-    ```bash
-    git clone <URL-del-repositorio>
-    cd ReactProyect
-    ```
-
-2.  **Instalar dependencias:**
-    Se necesita Node.js y npm instalados. Ejecuta el siguiente comando en la raíz del proyecto.
-    ```bash
-    npm install
-    ```
-
-3.  **Iniciar la aplicación:**
-    Este comando iniciará el servidor de desarrollo y abrirá la aplicación en tu navegador.
-    ```bash
-    npm start
-    ```
-
-4.  **Construir para producción:**
-    Para crear una versión optimizada para producción, ejecuta:
-    ```bash
-    npm run build
-    ```
