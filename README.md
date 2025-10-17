@@ -2,8 +2,9 @@
 Este proyecto, Zapa-Store-React, ha sido desarrollado exclusivamente con fines educativos y demostrativos. No está diseñado para entornos de producción. El código puede contener fallas de seguridad, lógica no optimizada y carece de validaciones exhaustivas y controles de acceso.
 No se recomienda su uso en aplicaciones reales sin una auditoría completa, pruebas rigurosas y fortalecimiento de seguridad.
 
-Sitios Web:
+Sitio Web:
 https://react-proyecto-czfhznp11-adrianeses-projects.vercel.app/
+Sitio Web:
 https://react-proyecto-nu.vercel.app/
 
 # Proyecto E-commerce con React
