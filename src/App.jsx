@@ -12,6 +12,7 @@ import { CarritoProvider } from './context/CarritoProvider';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './index.css';
 import { AuthProvider } from "./context/AuthProvider";
+import Error404 from "./pages/Error404";
 
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/carrito" element={<Carrito />} />
             <Route path="/producto/:id" element={<Producto />} />
+            <Route path="*" element={<Error404 />} />{" "}
+            {/* Ruta para páginas no encontradas */}
           </Routes>
           <Footer />
         </Router>

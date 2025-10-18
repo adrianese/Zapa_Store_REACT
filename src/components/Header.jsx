@@ -1,9 +1,7 @@
-
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { CarritoContext } from '../context/CarritoContext';
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { CarritoContext } from "../context/CarritoContext";
 import "./Header.css";
-
 
 const Header = () => {
   const { carrito } = useContext(CarritoContext);
@@ -12,19 +10,46 @@ const Header = () => {
     <header className="header">
       <div className="contenedor contenido-header">
         <div className="barra">
-          <Link to="/" className='link-h1'>
+          <NavLink to="/" className="link-h1">
             <h1 className="titulo-header">
               ZAPA <span>Store</span>
             </h1>
-          </Link>
+          </NavLink>
           <nav className="navegacion">
-            <Link to="/">Inicio</Link>
-            <Link to="/productos">Productos</Link>
-            <Link to="/nosotros">Nosotros</Link>
-            <Link to="/contacto">Contacto</Link>
-            <Link className="carrito" to="/carrito" id="icono-carrito">
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "activo" : "")}
+              end
+            >
+              Inicio
+            </NavLink>
+            <NavLink
+              to="/productos"
+              className={({ isActive }) => (isActive ? "activo" : "")}
+            >
+              Productos
+            </NavLink>
+            <NavLink
+              to="/nosotros"
+              className={({ isActive }) => (isActive ? "activo" : "")}
+            >
+              Nosotros
+            </NavLink>
+            <NavLink
+              to="/contacto"
+              className={({ isActive }) => (isActive ? "activo" : "")}
+            >
+              Contacto
+            </NavLink>
+            <NavLink
+              to="/carrito"
+              className={({ isActive }) =>
+                isActive ? "carrito activo" : "carrito"
+              }
+              id="icono-carrito"
+            >
               Carrito 🛒 <span id="carrito-contador">{carrito.length}</span>
-            </Link>
+            </NavLink>
           </nav>
         </div>
       </div>

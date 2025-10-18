@@ -6,6 +6,8 @@ import Buscador from "../components/Buscador";
 import ModalComparacion from "../components/ModalComparacion";
 import CarritoModal from "../components/CarritoModal";
 import "../components/ProductoCard.css";
+ 
+import Swal from "sweetalert2";
 
 const Productos = () => {
   const [productos, setProductos] = useState([]);
@@ -62,6 +64,7 @@ const Productos = () => {
   }; */
 
   // Toggle carrito
+  /*
   const toggleCarrito = (producto, talle) => {
     const existe = carrito.find((p) => p.id === producto.id);
     if (existe) {
@@ -73,7 +76,38 @@ const Productos = () => {
       setCarrito([...carrito, { ...producto, talle }]);
       setMostrarCarrito(true);
     }
+  };*/
+
+  const toggleCarrito = (producto, talle) => {
+    const existe = carrito.find((p) => p.id === producto.id);
+
+    if (existe) {
+      setCarrito(carrito.filter((p) => p.id !== producto.id));
+    } else {
+      if (!producto.disponible) {
+        Swal.fire({
+          icon: "error",
+          title: "Producto no disponible",
+          text: "Este producto no está disponible.",
+        });
+        return;
+      }
+
+      if (!talle) {
+        Swal.fire({
+          icon: "warning",
+          title: "Talle requerido",
+          text: "Seleccioná un talle antes de continuar.",
+        });
+        return;
+      }
+
+      setCarrito([...carrito, { ...producto, talle }]);
+      setMostrarCarrito(true);
+    }
   };
+
+
 
   // Eliminar individualmente
   const eliminarDelCarrito = (id) => {

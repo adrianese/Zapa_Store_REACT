@@ -103,7 +103,7 @@
 .barra {
     display: flex;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     padding-top: 3rem;
     justify-content: space-between;
 }
@@ -221,4 +221,10 @@
         padding-top: 3rem;
         justify-content: space-between;
     }
+}
+
+.navegacion .activo {
+  /*font-weight: bold;*/
+  color: #eba543;
+  /*text-decoration: underline;*/
 }

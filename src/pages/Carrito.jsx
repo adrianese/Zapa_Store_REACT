@@ -4,6 +4,7 @@ import { CarritoContext } from "../context/CarritoContext";
 import { useAuth } from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import "./Producto.css";
+import Swal from "sweetalert2";
 
 const Carrito = () => {
   const { carrito, setCarrito } = useContext(CarritoContext);
@@ -55,7 +56,12 @@ const Carrito = () => {
       });
 
       if (response.ok) {
-        alert("¡Compra confirmada!");
+        Swal.fire({
+          title: "¡Compra confirmada!",
+          icon: "success",
+          draggable: true,
+        });
+    
         setCarrito([]);
         localStorage.removeItem("carrito");
         logout();
@@ -73,8 +79,8 @@ const Carrito = () => {
   if (formEnviado) return null;
 
   return (
-    <div className="formulario-seccion contenedor">
-      <h3 className="carrito-titulo">Resumen de Compra</h3>
+    <div className=" text-center div-base">
+      <h2 className="carrito-titulo">Resumen de Compra</h2>
 
       {carrito.length === 0 ? (
         <p>No hay productos en el carrito.</p>

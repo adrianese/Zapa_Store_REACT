@@ -854,3 +854,9 @@ p{
 
 
 
+.div-base {
+    background-color: #fce8ca;
+    min-height: 27rem;
+    padding: 6rem;
+    margin-bottom: -3rem;
+}
