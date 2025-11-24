@@ -62,8 +62,10 @@ src/
 │   ├── AuthProvider.jsx
 │   └── CarritoProvider.jsx
 
-
+************************************************************
 Las siguientes secciones se agregaronen la segunda etapa:
+************************************************************
+
 PAGES/
 │   ├── Login.jsx
 │   ├── Register.jsx
@@ -75,9 +77,9 @@ PAGES/
 │       ├── CrearProducto.jsx
 │       ├── EditarProducto.jsx
 │       ├── PedidosAdmin.jsx  
-│       ├── AdminHeader.jsx    # ← NUEVO: navbar exclusivo para admin
-│       ├── DarkModeToogle.jsx   # ← NUEVO: app de dark mode
-│       └── AdminFooter.jsx    # ← NUEVO: footer exclusivo para admin
+│       ├── AdminHeader.jsx    # ← navbar exclusivo para admin
+│       ├── DarkModeToogle.jsx   # ← app de dark mode
+│       └── AdminFooter.jsx    # ←  footer para admin
 ├── context/
 │   ├── AuthContext.jsx
 │   ├── AuthProvider.jsx
@@ -87,23 +89,23 @@ PAGES/
 │   
 │
 ├── routes/
-│   ├── PrivateRoute.jsx       # ← NUEVO: protege rutas para usuarios logueados
-│   └── AdminRoute.jsx         # ← NUEVO: protege rutas para admin
+│   ├── PrivateRoute.jsx       # ←  protege rutas para usuarios logueados
+│   └── AdminRoute.jsx         # ←  protege rutas para admin
 ```
-*   **Página Register:**
+Página Register:
 Las opciones de Register  se realizaran con nombre, correo y password.
-*   **Páginas Login:** Las opciones de login solo correo y password.
+Páginas Login: Las opciones de login solo correo y password.
     Como funciona el sistema: Al cargar un producto o mas al carritoModal tenemos la opción de registrarse o loguearse.
     El Usuario o Cliente, se verificará en una base de datos de MOCKapi:
     https://68e448c88e116898997b75e3.mockapi.io/api/productos/users
-
+```
    "id": "2",
     "nombre": "Cliente Uno",
     "email": "cliente1@correo.com",
     "password": "123456",
     "rol": "usuario",
     "pedidos": []
-      
+  ```    
     Que  tiene los datos del registrado , su pedido con id y a su vez factura y otros datos .cuando el usuario este registrado y logueado tendrá la posibilidad de ver sus compras anteriores si existieran podrá habilitar la compra actual mediante un form donde se enviará para procesar.
     
      Como Admin se ingresará a través de /admin con correo y password genérico. admin@correo.com y admin. Al ingresar ira a un dashboard, donde podrá:
@@ -113,7 +115,7 @@ Las opciones de Register  se realizaran con nombre, correo y password.
 
 Los Productos:
     https://68e448c88e116898997b75e3.mockapi.io/api/productos/products
-
+```
       {
     "id": "1",
     "nombre": "Niko",
@@ -121,105 +123,71 @@ Los Productos:
     "actividad": "trekking",
     "disponible": true,
     "precio": 86500 },
-
+```
 ---
 
-### 🔹 Fase 1: Autenticación básica (Login y Registro)
-
-**Objetivo:** Permitir que usuarios se registren, inicien sesión y se identifiquen para comprar.
-
-#### 1. Crear estructura de usuarios en MockAPI
-- Endpoint: `/users`
-- Campos: `id`, `nombre`, `correo`, `password`, `compras[]`, `rol` (`usuario` o `admin`)
-
-#### 2. Implementar `Register.jsx`
-- Formulario con `nombre`, `correo`, `password`
+Autenticación básica (Login y Registro)
+Permitir que usuarios se registren, inicien sesión y se identifiquen para comprar.
+Estructura de usuarios en MockAPI
+- Endpoint: /users
+- Campos: id, nombre, correo, password, compras[], rol (usuario o admin)
+Register.jsx
+- Formulario con nombre, correo, password
 - Validaciones visuales (SweetAlert2, campos obligatorios)
 - POST a MockAPI para crear usuario
-
-#### 3. Implementar `Login.jsx`
-- Formulario con `correo`, `password`
+Login.jsx
+- Formulario con correo, password
 - Validación contra MockAPI (GET con filtro por correo)
-- Guardar sesión en `localStorage` o `AuthContext`
-- Redirigir a `/checkout` si hay productos en el carrito
+- Guardar sesión en localStorage o AuthContext
+- Redirigir a /checkout si hay productos en el carrito
+AuthContext.jsx
+- Estado global: usuario, isLogged, login(), logout()
+- Persistencia con localStorage
 
-#### 4. Crear `AuthContext.jsx`
-- Estado global: `usuario`, `isLogged`, `login()`, `logout()`
-- Persistencia con `localStorage`
-
----
-
-### 🔹 Fase 2: Checkout y gestión de pedidos
-
-**Objetivo:** Procesar compras y vincularlas al usuario logueado.
-
-#### 1. Crear estructura de pedidos en MockAPI
-- Endpoint: `/users`
- Campos: `id`, `nombre`, `correo`, `password`, `compras[]`, `rol` (`usuario` o `admin`), `fecha`, `total`, `estado`, `factura`
-
-#### 2. Implementar `Checkout.jsx`
+Checkout y gestión de pedidos
+Procesamiento de compras y vínculo al usuario logueado.
+Estructura de pedidos en MockAPI
+- Endpoint: /users
+- Campos: id, nombre, correo, password, compras[], rol (usuario o admin), fecha, total, estado, factura
+Checkout.jsx
 - Mostrar resumen del carrito
 - Formulario de envío (dirección, método de pago simulado)
-- POST a `/pedidos` con los datos del usuario y productos
+- POST a /pedidos con los datos del usuario y productos
 - Vaciar carrito y mostrar confirmación
+Mis-compras.jsx
+- Muestra cards con fecha, total, productos (Se reenvía luego de la confirmación)
 
-#### 3. Mostrar compras anteriores
-- Muestra cards con fecha, total, productos (Se reenvia luego de la confirmación)
-
----
-
-### 🔹 Fase 3: Panel de administración
-
-**Objetivo:** Control total sobre productos y pedidos.
-
-#### 1. Login de administrador
-- Validar contra correo `admin@correo.com` y password `admin`
-- Redirigir a `/admin/board`
-
-
- `ProductosAdmin.jsx`
-- GET `/products`
-- Muestra cards de productos con botón de editar y eliminar.
+Panel de administración
+Control total sobre productos y pedidos.
+Login de administrador
+- Validar con correo admin@correo.com y password admin
+- Redirigir a /admin/board
+ProductosAdmin.jsx
+- GET /products
+- Muestra cards de productos con botón de editar y eliminar
 - DELETE para eliminar
-- Navegar a `EditarProducto.jsx`
+- Navegar a EditarProducto.jsx
 - Formulario precargado con datos del producto
 - PUT para actualizar
-
- `CrearProducto.jsx`
+CrearProducto.jsx
 - Formulario completo con imagen, nombre, precio, actividad, disponibilidad
-- POST a `/products`
-
- `PedidosAdmin.jsx`
-- GET `/users`
+- POST a /products
+PedidosAdmin.jsx
+- GET /users
 - Muestra tabla con: ID, usuario, fecha, total, productos, estado
-- Filtro por fecha o usuario.
+- Filtro por fecha o usuario
 
----
+Estilos y componentes
+Público
+- Se trabajó con librería "react-i18next" para traducción Español / English
+Admin
+- Implementado con DARKMode y Styled-Components
+- AdminHeader.jsx, AdminFooter.jsx, PedidosAdmin.jsx, ProductForm.jsx etc.
+- Uso de react-router-dom para proteger rutas: PrivateRoute para usuarios y AdminRoute para admin
+- Lógica de carrito en un hook: useCarrito()
+- Uso SweetAlert2 para feedback visual en formularios y acciones
+- Agregá Loader para llamadas a la API
 
-### Estilos y componentes
-
-### Público
-- Se trabajo con libreria "react-i18next" Para traducción Español /English
-
-### Admin
- Implementado con DARKMode y Styled-Components.
-- `AdminHeader.jsx`, `AdminFooter.jsx`, `PedidosAdmin.jsx` , `ProductForm.jsx` etc,
-- Uso de `react-router-dom` para proteger rutas: `PrivateRoute` para usuarios y `AdminRoute` para admin
-- Lógica de carrito en un hook: `useCarrito()`
-- Uso `SweetAlert2` para feedback visual en formularios y acciones
-- Agregá `Loader` para llamadas a la API
-
----
-
-## 🛠 Orden recomendado de implementación
-
-1. **AuthContext + Login + Register**
-2. **Checkout + lógica de pedidos**
-3. **Mostrar compras anteriores**
-4. **Admin login + Dashboard**
-5. **ProductosAdmin + CrearProducto + EditarProducto**
-6. **PedidosAdmin**
-7. **Separar estilos y componentes públicos/admin**
+📧 adrianseri@hotmail.com
 
 
-adrianseri@hotmail.com
