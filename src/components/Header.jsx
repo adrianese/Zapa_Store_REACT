@@ -1,10 +1,21 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CarritoContext } from "../context/CarritoContext";
+import { useTranslation } from "react-i18next";
+import LanguageSelector from "../components/LanguageSelector";
+import { useAuth } from "../context/AuthProvider";
 import "./Header.css";
 
 const Header = () => {
+  const navigate = useNavigate();
   const { carrito } = useContext(CarritoContext);
+  const { isAuthenticated, usuario, logout } = useAuth();
+  const { t } = useTranslation();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/productos");
+  };
 
   return (
     <header className="header">
@@ -12,34 +23,35 @@ const Header = () => {
         <div className="barra">
           <NavLink to="/" className="link-h1">
             <h1 className="titulo-header">
-              ZAPA <span>Store</span>
+              ZAPA <span className="estilo-titulo">Store</span>
             </h1>
           </NavLink>
+
           <nav className="navegacion">
             <NavLink
               to="/"
               className={({ isActive }) => (isActive ? "activo" : "")}
               end
             >
-              Inicio
+              {t("navbar.home")}
             </NavLink>
             <NavLink
               to="/productos"
               className={({ isActive }) => (isActive ? "activo" : "")}
             >
-              Productos
+              {t("navbar.products")}
             </NavLink>
             <NavLink
               to="/nosotros"
               className={({ isActive }) => (isActive ? "activo" : "")}
             >
-              Nosotros
+              {t("navbar.about")}
             </NavLink>
             <NavLink
               to="/contacto"
               className={({ isActive }) => (isActive ? "activo" : "")}
             >
-              Contacto
+              {t("navbar.contact")}
             </NavLink>
             <NavLink
               to="/carrito"
@@ -48,9 +60,17 @@ const Header = () => {
               }
               id="icono-carrito"
             >
-              Carrito 🛒 <span id="carrito-contador">{carrito.length}</span>
+              {t("navbar.cart")}{" "}
+              <span id="carrito-contador">{carrito.length}</span>
             </NavLink>
+            <LanguageSelector /> {/* Selector de idioma minimalista */}
           </nav>
+
+          {isAuthenticated && (
+            <button className="btn btn-danger" onClick={handleLogout}>
+              {t("navbar.logout")} ({usuario.email})
+            </button>
+          )}
         </div>
       </div>
     </header>

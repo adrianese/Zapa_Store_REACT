@@ -1,12 +1,9 @@
 
-/* Footer.css */
-
 /* Sección principal */
 .footer .seccion {
   background-color: #333;;
   padding: 3rem 2rem;
-  border-top: 1px solid #ccc;
-  margin-top: 4rem;
+  margin-top: 2.5rem;
 }
 
 /* Navegación */
@@ -16,7 +13,7 @@
 
 .navegacion {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   flex-wrap: wrap;
   gap: 2rem;
 }
@@ -30,42 +27,31 @@
 }
 
 .navegacion a:hover {
-  color: #71b100;
-}
-
-/* Carrito */
-.carrito {
-  font-weight: bold;
-  color: #de87dc;
+  color: #af6e12;
 }
 
 
-/* Copyright y redes */
+/* copy naranja */
 .contenedor-copy {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: row;
+ /* justify-content: center;
+  align-items: center;*/
+  background-color: #e08709;
+  padding: 2rem 10rem;
+  min-width: 100vw;
   flex-wrap: wrap;
-  gap: 1rem;
-  padding-top: 2rem;
-  border-top: 1px solid #ddd;
 }
+
 
 .copyright {
   font-size: 1.4rem;
-  color: #333;
+  color: #dfd8d8;
   margin: 0;
 }
 
-/* Redes sociales */
-.redes-sociales {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-}
-
 .icono {
-  width: 2.4rem;
+  width: 3rem;
   height: auto;
   transition: transform 0.3s ease;
 }
@@ -74,9 +60,6 @@
   transform: scale(1.1);
 }
 
-.icono-sobre {
-  filter: invert(20%);
-}
 
 .bi-github {
   color: #000;
@@ -101,28 +84,6 @@
   }
 }
 
-/* copy naranja */
-.contenedor-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #e08709;
-  padding: 1.2rem 10rem;
-  /* Espaciado interno */
-  flex-wrap: wrap;
-}
-
-/* texto centrado en 480px */
-.copyright {
-  color: #ffffff;
-  text-align: center;
-  flex: 1;
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-
 
 /* Iconos de Contacto (correo y GitHub) */
 .iconos-contacto {
@@ -131,41 +92,6 @@
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.iconos-contacto a img,
-.iconos-contacto a svg {
-  width: 2.5rem;
-  /* Tamaño de los iconos de contacto */
-  height: 2.5rem;
-  transform: scale(1.2);
-  transition: transform 0.3s ease;
-}
-
-.iconos-contacto a:hover img,
-.iconos-contacto a:hover svg {
-  transform: translateY(-3px);
-  filter: invert(70%);
-  transform: scale(1.2);
-}
-
-.footer {
-  padding: 2.5rem;
-  background-color: #333333;
-  color: #FFFFFF;
-}
-
-.seccion {
-  margin-bottom: 2.5rem;
-  margin-top: 2.5rem;
-}
-
-.navegacion {
-  display: flex;
-  align-items: center;
-}
-
-.navegacion a:hover {
-  color: #eba543;
-}
 
 .footer-principal {
   display: flex;
@@ -177,88 +103,31 @@
   gap: 2rem;
 }
 
-@media (min-width: 768px) {
-  .footer-principal {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-}
-
-.navegacion-footer {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  gap: 1.5rem;
-}
-
-.navegacion-footer a {
-  color: var(--color-blanco);
-  text-decoration: none;
-  font-size: 1.8rem;
-  transition: color 0.3s ease;
-}
-
-.navegacion-footer a:hover {
-  color: var(--color-naranja);
-}
-
-@media (min-width: 768px) {
-  .navegacion-footer {
-    flex-direction: row;
-    gap: 2.5rem;
-  }
-}
-
-.footer-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .footer-info {
-    align-items: flex-end;
-    text-align: right;
-  }
-}
-
-.titulo-pagina {
-  font-size: 3rem;
-  margin: 0;
-  color: var(--color-blanco);
-  font-weight: 700;
-}
-
-.titulo-footer {
-  font-size: 3rem;
-  margin: 0;
-  color: var(--color-blanco);
-  font-weight: 300;
-}
-
 .redes-sociales {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
+  align-items: center;
 }
 
-.redes-sociales a img,
-.redes-sociales a svg {
-  width: 2.8rem;
-  height: 2.8rem;
-  transition: transform 0.3s ease;
+.icono {
+  width: 3rem;
+  height: 3rem;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.redes-sociales a:hover img,
-.redes-sociales a:hover svg {
-  transform: translateY(-3px);
+.icono:hover {
+  transform: scale(1.1);
+  filter: brightness(0.8);
 }
 
-@media (min-width: 768px) {
-  .contenedor-copy {
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 1.2rem 10rem;
-  }
+.icono-github {
+  width: 3rem;
+  height: 3rem;
+  fill: #000;
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+.icono-github:hover {
+  transform: scale(1.1);
+
 }

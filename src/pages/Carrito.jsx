@@ -1,18 +1,19 @@
-// src/pages/Carrito.jsx
 import React, { useContext, useState } from "react";
 import { CarritoContext } from "../context/CarritoContext";
 import { useAuth } from "../context/AuthProvider";
-import { useNavigate } from "react-router-dom";
-import "./Producto.css";
+import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Swal from "sweetalert2";
+import "./Producto.css";
 
 const Carrito = () => {
   const { carrito, setCarrito } = useContext(CarritoContext);
   const { login, logout, isAuthenticated, usuario } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
-  const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [formEnviado, setFormEnviado] = useState(false);
 
   const total = carrito.reduce((acc, item) => acc + item.precio, 0);
@@ -20,106 +21,139 @@ const Carrito = () => {
   const resumenPedido = carrito
     .map(
       (item, i) =>
-        `${i + 1}. ${item.nombre} – ${item.imagen.split(".")[0]} – Talle: ${
-          item.talle
-        } – $${item.precio.toLocaleString("es-AR")}`
+        `${i + 1}. ${item.nombre} – ${item.imagen.split(".")[0]} – ${t(
+          "cart.size"
+        )}: ${item.talle} – $${item.precio.toLocaleString("es-AR")}`
     )
     .join("\n");
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (login(nombre, email)) {
-      // autenticado
-    } else {
-      alert("Por favor completá nombre y correo.");
+    const resultado = await login(email, password, "usuario");
+
+    if (!resultado || !resultado.exito) {
+      Swal.fire({
+        icon: "error",
+        title: t("cart.alerts.authError.title"),
+        text: resultado?.mensaje || t("cart.alerts.authError.text"),
+      });
+      return;
+    }
+
+    if (resultado.rol === "admin") {
+      Swal.fire({
+        icon: "error",
+        title: t("cart.alerts.admin.title"),
+        text: t("cart.alerts.admin.text"),
+        timer: 2000,
+        showConfirmButton: false,
+      });
+      navigate("/admin");
+      return;
+    }
+
+    if (resultado.rol === "usuario") {
+      Swal.fire({
+        icon: "success",
+        title: t("cart.alerts.welcome.title"),
+        text: t("cart.alerts.welcome.text"),
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      // No redirigimos: se mostrará el formulario de confirmación
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("nombre", usuario.nombre);
-    formData.append("email", usuario.email);
-    formData.append(
-      "mensaje",
-      `Tu Pedido:\n\n${resumenPedido}\n\nTotal: $${total.toLocaleString(
-        "es-AR"
-      )}`
-    );
+    if (!usuario || !usuario.id || !usuario.email) {
+      Swal.fire("Error", t("cart.alerts.noUser"), "error");
+      return;
+    }
+
+    const nuevoPedido = {
+      id: `pedido${Date.now()}`,
+      fecha: new Date().toISOString().split("T")[0],
+      productos: carrito.map((item) => ({
+        id: item.id,
+        nombre: item.nombre,
+        imagen: item.imagen,
+        actividad: item.actividad,
+        talle: item.talle,
+        cantidad: item.cantidad,
+        precio: item.precio,
+      })),
+      total,
+      estado: "pendiente",
+      factura: `F001-${Math.floor(Math.random() * 100000)
+        .toString()
+        .padStart(8, "0")}`,
+    };
 
     try {
-      const response = await fetch("https://formspree.io/f/xgvybglw", {
-        method: "POST",
-        body: formData,
-        headers: { Accept: "application/json" },
-      });
+      const updateRes = await fetch(
+        `https://68e448c88e116898997b75e3.mockapi.io/api/productos/users/${usuario.id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...usuario,
+            pedidos: [...(usuario.pedidos || []), nuevoPedido],
+          }),
+        }
+      );
 
-      if (response.ok) {
+      if (updateRes.ok) {
         Swal.fire({
-          title: "¡Compra confirmada!",
+          title: t("cart.alerts.success.title"),
           icon: "success",
-          draggable: true,
         });
-    
+
         setCarrito([]);
         localStorage.removeItem("carrito");
-        logout();
         setFormEnviado(true);
-        navigate("/");
+        navigate("/mis-compras");
+        setTimeout(() => logout(), 100000);
       } else {
-        alert("Error al enviar el formulario.");
+        Swal.fire("Error", t("cart.alerts.submitError"), "error");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("No se pudo enviar el formulario.");
+      Swal.fire("Error", t("cart.alerts.submitError"), "error");
     }
   };
 
   if (formEnviado) return null;
 
   return (
-    <div className=" text-center div-base">
-      <h2 className="carrito-titulo">Resumen de Compra</h2>
+    <div className="text-center div-base">
+      <h2 className="carrito-titulo">{t("cart.title")}</h2>
 
       {carrito.length === 0 ? (
-        <p>No hay productos en el carrito.</p>
+        <p>{t("cart.empty")}</p>
       ) : (
         <>
-          {/* Resumen visual del carrito */}
           <ul className="lista-carrito">
             {carrito.map((item, i) => (
-              <li key={item.id} className="item-carrito">
+              <li key={`${item.id}-${i}`} className="item-carrito">
                 <strong>{i + 1}.</strong> {item.nombre} –{" "}
-                {item.imagen.split(".")[0]} – Talle: {item.talle} – $
+                {item.imagen.split(".")[0]} – {t("cart.size")}: {item.talle} – $
                 {item.precio.toLocaleString("es-AR")}
               </li>
             ))}
           </ul>
 
           <p className="precio-item">
-            <strong>Total:</strong> ${total.toLocaleString("es-AR")}
+            <strong>{t("cart.total")}:</strong> ${total.toLocaleString("es-AR")}
           </p>
 
-          {/* Autenticación previa */}
           {!isAuthenticated ? (
             <form onSubmit={handleLogin} className="formulario">
               <fieldset>
-                <legend></legend>
-                <h3 className="carrito-titulo">
-                  Debes iniciar sesión y confirmar la compra
-                </h3>
+                <h3 className="carrito-titulo">{t("cart.loginPrompt")}</h3>
 
-                <label htmlFor="nombre">Nombre</label>
-                <input
-                  type="text"
-                  id="nombre"
-                  value={nombre}
-                  onChange={(e) => setNombre(e.target.value)}
-                  required
-                />
-
-                <label htmlFor="email">Correo</label>
+                <label htmlFor="email">{t("cart.email")}</label>
                 <input
                   type="email"
                   id="email"
@@ -128,9 +162,18 @@ const Carrito = () => {
                   required
                 />
 
+                <label htmlFor="password">{t("cart.password")}</label>
+                <input
+                  type="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+
                 <input
                   type="submit"
-                  value="Continuar"
+                  value={t("cart.continue")}
                   className="boton-verde"
                 />
               </fieldset>
@@ -138,22 +181,23 @@ const Carrito = () => {
           ) : (
             <form onSubmit={handleSubmit} className="formulario">
               <fieldset>
-                <legend>Confirmación de Pedido</legend>
-
+                <legend>{t("cart.confirmation")}</legend>
                 <p>
-                  <strong>👤 Nombre:</strong> {usuario.nombre}
+                  <strong>{t("cart.name")}:</strong> {usuario.nombre}
                 </p>
                 <p>
-                  <strong>📧 Email:</strong> {usuario.email}
+                  <strong>📧 {t("cart.email")}:</strong> {usuario.email}
                 </p>
 
-                <label htmlFor="mensaje">Resumen del Pedido</label>
+                <label htmlFor="mensaje">{t("cart.summary")}</label>
                 <textarea
                   name="mensaje"
                   id="mensaje"
-                  defaultValue={`Tu Pedido:\n\n${resumenPedido}\n\nTotal: $${total.toLocaleString(
-                    "es-AR"
-                  )}`}
+                  defaultValue={`${t(
+                    "cart.yourOrder"
+                  )}:\n\n${resumenPedido}\n\n${t(
+                    "cart.total"
+                  )}: $${total.toLocaleString("es-AR")}`}
                   readOnly
                   required
                   rows="6"
@@ -162,13 +206,22 @@ const Carrito = () => {
 
               <input
                 type="submit"
-                value="Confirmar Compra"
+                value={t("cart.confirm")}
                 className="boton-verde"
               />
             </form>
           )}
         </>
       )}
+
+      
+        <p className="link-text">
+          {t("cart.noAccount")}{" "}
+          <Link to="/register" className="boton-verde">
+            {t("cart.register")}
+          </Link>
+        </p>
+     
     </div>
   );
 };

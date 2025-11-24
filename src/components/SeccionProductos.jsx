@@ -1,71 +1,60 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import "./SeccionProductos.css";
 
 const SeccionProductos = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="productos">
       <div className="container text-center py-5">
-        <h2>Nuestros Productos</h2>
+        <h2>{t("productsAll.sectionTitle")}</h2>
         <div className="row productos">
           {/* Exclusivos */}
           <div className="col-12 col-md-4 columna">
-            <h3 className="titulo">Exclusivos</h3>
+            <h2 className="titulo">{t("productsAll.exclusive.title")}</h2>
             <i className="bi bi-award"></i>
             <p className="titulo-descripcion">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores
-              nobis doloribus itaque. Repudiandae corporis quod repellendus,
-              aperiam, molestias aut sapiente sint veniam accusamus officiis
-              excepturi iste suscipit exercitationem ullam voluptatum, totam sit
-              est dolorum reiciendis?
+              {t("productsAll.exclusive.description")}
             </p>
             <div className="badges-contenedor">
-              <span className="badge rounded-pill text-bg-dark">
-                NUEVOS DISEÑOS
+              <span className="badge rounded-pill text-bg-success">
+                {t("productsAll.exclusive.badge1")}
               </span>
               <span className="badge rounded-pill text-bg-dark">
-                RECIÉN LLEGADOS
+                {t("productsAll.exclusive.badge2")}
               </span>
             </div>
           </div>
 
           {/* Todos */}
           <div className="col-12 col-md-4 columna">
-            <h3 className="titulo">Todos</h3>
+            <h2 className="titulo">{t("productsAll.all.title")}</h2>
             <i className="bi bi-align-center"></i>
             <p className="titulo-descripcion">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores
-              nobis doloribus itaque. Repudiandae corporis quod repellendus,
-              aperiam, molestias aut sapiente sint veniam accusamus officiis
-              excepturi iste suscipit exercitationem ullam voluptatum, totam sit
-              est dolorum reiciendis?
+              {t("productsAll.all.description")}
             </p>
             <div className="badges-contenedor d-flex no-wrap">
-              <span className="badge rounded-pill text-bg-dark">
-                TODAS LAS MARCAS
+              <span className="badge rounded-pill text-bg-success">
+                {t("productsAll.all.badge1")}
               </span>
               <span className="badge rounded-pill text-bg-dark">
-                TODOS LOS MODELOS
+                {t("productsAll.all.badge2")}
               </span>
             </div>
           </div>
 
           {/* Discontinuos */}
           <div className="col-12 col-md-4 columna">
-            <h3 className="titulo">Discontinuos</h3>
+            <h2 className="titulo">{t("productsAll.discontinued.title")}</h2>
             <i className="bi bi-slash-circle"></i>
-            <p className="parrafo">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores
-              nobis doloribus itaque. Repudiandae corporis quod repellendus,
-              aperiam, molestias aut sapiente sint veniam accusamus officiis
-              excepturi iste suscipit exercitationem ullam voluptatum, totam sit
-              est dolorum reiciendis?
-            </p>
+            <p className="parrafo">{t("productsAll.discontinued.description")}</p>
             <div className="badges-contenedor">
-              <span className="badge rounded-pill text-bg-dark">
-                MEJORES PRECIOS
+              <span className="badge rounded-pill text-bg-success">
+                {t("productsAll.discontinued.badge1")}
               </span>
               <span className="badge rounded-pill text-bg-dark">
-                VARIOS TALLES
+                {t("productsAll.discontinued.badge2")}
               </span>
             </div>
           </div>

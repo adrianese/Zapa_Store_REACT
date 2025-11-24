@@ -104,9 +104,9 @@ a{
 .carrito {
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+ /* text-overflow: ellipsis;*/
 }
-span{
+.estilo-titulo{
     font-weight: 200;
     border-top: 1px solid #EEE;
     border-bottom: 1px solid #eeeeee;
@@ -164,7 +164,8 @@ p{
   min-height: 10rem;
     margin-bottom:2.5rem;
     margin-top:2.5rem;
-    background-color: #fce8ca;;
+   background-color: #fce8ca;
+
 }
 .precio{
     color:#71b100;
@@ -304,7 +305,7 @@ font-size: 2rem;
    font-size: 1.5rem;
 }
 .icono-sobre{
-    filter: invert(10%);
+    filter: invert(5%);
 }
 /* Iconos de Contacto (correo y GitHub) */
 .iconos-contacto {
@@ -523,7 +524,7 @@ p{
         justify-content:space-between;
     }
     .contenedor-anuncios{
-    background-color: #a4a4a4;
+  /*  background-color: #a4a4a4;*/
     display:grid;
     grid-template-columns:repeat(1,1fr);
     gap:1rem;
@@ -783,74 +784,6 @@ p{
 }
 
 
-
-/*///carrito /////*/
-
-
-
-
-
-.lista-carrito {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0;
-}
-
-.item-carrito {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 0.5rem;
-  position: relative;
-}
-
-
-
-.detalle-carrito-linea {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.5rem;
-  align-items: center;
-  flex: 1;
-}
-
-.marca-modelo {
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-
-.precio-item {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.talle-item {
-  font-size: 1.4rem;
-  color: #333;
-  font-weight: bold;
-}
-
-
-
-.total-carrito {
-  font-size: 1.4rem;
-  margin-top: 1rem;
-}
-
-.precio-total {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #000;
-}
-
-.acciones-carrito {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-}
 
 
 

@@ -5,9 +5,12 @@ import ProductoCard from "../components/ProductoCard";
 import Buscador from "../components/Buscador";
 import ModalComparacion from "../components/ModalComparacion";
 import CarritoModal from "../components/CarritoModal";
-import "../components/ProductoCard.css";
- 
+import TablaTalles from "../components/TablaTalles";
+import GuiaTallesModal from "../components/GuiaTallesModal";
 import Swal from "sweetalert2";
+import { useTranslation } from "react-i18next";
+import "../components/ProductoCard.css";
+
 
 const Productos = () => {
   const [productos, setProductos] = useState([]);
@@ -15,111 +18,93 @@ const Productos = () => {
   const [seleccionados, setSeleccionados] = useState([]);
   const [mostrarModalComparacion, setMostrarModalComparacion] = useState(false);
   const [mostrarCarrito, setMostrarCarrito] = useState(false);
-  const navigate = useNavigate();
-
-  const { carrito, setCarrito } = useContext(CarritoContext);
   const [mostrarFlecha, setMostrarFlecha] = useState(false);
+  const navigate = useNavigate();
+  const { carrito, setCarrito } = useContext(CarritoContext);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
       const umbral = document.documentElement.scrollHeight * 0.35;
       setMostrarFlecha(window.scrollY > umbral);
-    };
 
-    
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Cargar productos desde JSON
-  useEffect(() => {
-    fetch("/datos.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setProductos(data.datos);
-        setProductosFiltrados(data.datos);
-      });
-  }, []);
-
-  // Ocultar botón flotante al hacer scroll
-  useEffect(() => {
-    const handleScroll = () => {
       const boton = document.getElementById("boton-ver-carrito");
-      if (!boton) return;
-      const scrollY = window.scrollY;
-      boton.style.opacity = scrollY > 300 ? "0" : "1";
-      boton.style.pointerEvents = scrollY > 300 ? "none" : "auto";
+      if (boton) {
+        boton.style.opacity = window.scrollY > 300 ? "0" : "1";
+        boton.style.pointerEvents = window.scrollY > 300 ? "none" : "auto";
+      }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Toggle selección para comparación
-  /* const toggleSeleccion = (id) => {
-    setSeleccionados((prev) =>
-      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
-    );
-  }; */
-
-  // Toggle carrito
-  /*
-  const toggleCarrito = (producto, talle) => {
-    const existe = carrito.find((p) => p.id === producto.id);
-    if (existe) {
-      setCarrito(carrito.filter((p) => p.id !== producto.id));
-    } else {
-      if (!producto.disponible)
-        return alert("Este producto no está disponible.");
-      if (!talle) return alert("Seleccioná un talle antes de continuar.");
-      setCarrito([...carrito, { ...producto, talle }]);
-      setMostrarCarrito(true);
-    }
-  };*/
-
-  const toggleCarrito = (producto, talle) => {
-    const existe = carrito.find((p) => p.id === producto.id);
-
-    if (existe) {
-      setCarrito(carrito.filter((p) => p.id !== producto.id));
-    } else {
-      if (!producto.disponible) {
+  useEffect(() => {
+    const obtenerProductos = async () => {
+      try {
+        const respuesta = await fetch(
+          "https://68e448c88e116898997b75e3.mockapi.io/api/productos/products"
+        );
+        if (!respuesta.ok)
+          throw new Error(`HTTP error! status: ${respuesta.status}`);
+        const data = await respuesta.json();
+        setProductos(data);
+        setProductosFiltrados(data);
+      } catch (error) {
+        console.error("Error al obtener productos:", error);
         Swal.fire({
           icon: "error",
-          title: "Producto no disponible",
-          text: "Este producto no está disponible.",
+          title: t("products.alerts.loadError.title"),
+          text: t("products.alerts.loadError.text"),
         });
-        return;
       }
+    };
+    obtenerProductos();
+  }, [t]);
 
-      if (!talle) {
-        Swal.fire({
-          icon: "warning",
-          title: "Talle requerido",
-          text: "Seleccioná un talle antes de continuar.",
-        });
-        return;
-      }
-
-      setCarrito([...carrito, { ...producto, talle }]);
-      setMostrarCarrito(true);
+  const toggleCarrito = (producto, talle) => {
+    if (!producto.disponible) {
+      Swal.fire({
+        icon: "error",
+        title: t("products.alerts.unavailable.title"),
+        text: t("products.alerts.unavailable.text"),
+      });
+      return;
     }
+
+    if (!talle) {
+      Swal.fire({
+        icon: "warning",
+        title: t("products.alerts.sizeRequired.title"),
+        text: t("products.alerts.sizeRequired.text"),
+      });
+      return;
+    }
+
+    const existe = carrito.find(
+      (p) => p.id === producto.id && p.talle === talle
+    );
+
+    if (existe) {
+      Swal.fire({
+        icon: "info",
+        title: t("products.alerts.alreadyAdded.title"),
+        text: t("products.alerts.alreadyAdded.text", { size: talle }),
+      });
+      return;
+    }
+
+    setCarrito([...carrito, { ...producto, talle, cantidad: 1 }]);
+    setMostrarCarrito(true);
   };
 
-
-
-  // Eliminar individualmente
-  const eliminarDelCarrito = (id) => {
-    setCarrito(carrito.filter((p) => p.id !== id));
+  const eliminarDelCarrito = (id, talle) => {
+    setCarrito(carrito.filter((p) => !(p.id === id && p.talle === talle)));
   };
 
-  // Vaciar carrito
   const vaciarCarrito = () => {
     setCarrito([]);
   };
 
-  // Confirmar compra
   const confirmarCompra = () => {
     navigate("/carrito");
   };
@@ -131,7 +116,8 @@ const Productos = () => {
   return (
     <div className="contenedor seccion">
       <Buscador productos={productos} onFiltrar={setProductosFiltrados} />
-
+    
+      <GuiaTallesModal />
       <div className="contenedor-anuncios">
         {productosFiltrados.map((producto) => (
           <ProductoCard
@@ -139,21 +125,18 @@ const Productos = () => {
             producto={producto}
             seleccionado={seleccionados.includes(producto.id)}
             enCarrito={carrito.some((p) => p.id === producto.id)}
-            /* onSeleccionar={toggleSeleccion} */
             onToggleCarrito={toggleCarrito}
           />
         ))}
       </div>
-
       {seleccionados.length >= 2 && (
         <button
           className="boton-comparar-flotante"
           onClick={() => setMostrarModalComparacion(true)}
         >
-          Comparar Seleccionados
+          {t("products.compareButton")}
         </button>
       )}
-
       {mostrarModalComparacion && (
         <ModalComparacion
           productos={productosSeleccionados}
@@ -167,19 +150,18 @@ const Productos = () => {
         className={`flotante ${mostrarFlecha ? "visible" : ""}`}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
-        <img src="img/uparrow.svg" alt="Ir arriba" />
+        <img src="img/uparrow.svg" alt={t("products.scrollTop")} />
       </div>
-
       {mostrarCarrito && (
         <CarritoModal
           carrito={carrito}
+          setCarrito={setCarrito}
           onEliminar={eliminarDelCarrito}
           onVaciar={vaciarCarrito}
           onCerrar={() => setMostrarCarrito(false)}
           onConfirmar={confirmarCompra}
         />
       )}
-
       {carrito.length > 0 && (
         <button
           className={`boton-ver-carrito-flotante ${
@@ -188,7 +170,7 @@ const Productos = () => {
           onClick={() => setMostrarCarrito(true)}
           id="boton-ver-carrito"
         >
-          🛒 Ver Carrito
+          🛒 {t("products.viewCart")}
         </button>
       )}
     </div>

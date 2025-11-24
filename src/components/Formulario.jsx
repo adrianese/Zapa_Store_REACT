@@ -1,6 +1,6 @@
-
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import "./Formulario.css";
 
 const Formulario = ({
@@ -16,6 +16,7 @@ const Formulario = ({
 }) => {
   const formRef = useRef(null);
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [enviado, setEnviado] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -26,9 +27,7 @@ const Formulario = ({
       const response = await fetch(action, {
         method: metodo,
         body: formData,
-        headers: {
-          Accept: "application/json",
-        },
+        headers: { Accept: "application/json" },
       });
 
       if (response.ok) {
@@ -36,11 +35,11 @@ const Formulario = ({
         if (onSuccess) onSuccess();
         navigate("/");
       } else {
-        alert("Hubo un error al enviar el formulario.");
+        alert(t("form.error"));
       }
     } catch (error) {
-      console.error("Error al enviar:", error);
-      alert("No se pudo enviar el formulario.");
+      console.error("Error:", error);
+      alert(t("form.errorSend"));
     }
   };
 
@@ -50,7 +49,7 @@ const Formulario = ({
 
       <form ref={formRef} onSubmit={handleSubmit} className="formulario">
         <fieldset>
-          <legend>Información Personal</legend>
+          <legend>{t("form.personalInfo")}</legend>
 
           {campos.map((campo) => (
             <div key={campo.name}>
@@ -66,12 +65,12 @@ const Formulario = ({
             </div>
           ))}
 
-          <label htmlFor="mensaje">Mensaje</label>
+          <label htmlFor="mensaje">{t("form.message")}</label>
           <textarea
             name="mensaje"
             id="mensaje"
             rows="4"
-            placeholder="Tu mensaje"
+            placeholder={t("form.messagePlaceholder")}
             defaultValue={mensaje}
             readOnly={soloLectura}
             required={!soloLectura}
@@ -80,8 +79,8 @@ const Formulario = ({
 
         {incluirSuscripcion && (
           <fieldset>
-            <legend>Desea recibir novedades</legend>
-            <p>Elija una opción</p>
+            <legend>{t("form.subscriptionTitle")}</legend>
+            <p>{t("form.subscriptionPrompt")}</p>
             <div className="grupo-radio">
               <label className="radio-label" htmlFor="contacto-suscripcion">
                 <input
@@ -90,7 +89,7 @@ const Formulario = ({
                   name="contacto"
                   id="contacto-suscripcion"
                 />
-                Suscribirme
+                {t("form.subscribe")}
               </label>
 
               <label className="radio-label" htmlFor="contacto-desuscripcion">
@@ -100,7 +99,7 @@ const Formulario = ({
                   name="contacto"
                   id="contacto-desuscripcion"
                 />
-                Desuscribirme
+                {t("form.unsubscribe")}
               </label>
             </div>
           </fieldset>

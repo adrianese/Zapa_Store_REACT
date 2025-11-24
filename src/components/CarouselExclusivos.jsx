@@ -1,53 +1,59 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import { Carousel } from "react-bootstrap";
-import './CarouselExclusivos.css';
+import { useTranslation } from "react-i18next";
+import "./CarouselExclusivos.css";
 
 const CarouselExclusivos = () => {
+  const { t } = useTranslation();
+
   const slides = [
     {
       img: "img/NI-9812.jpg",
-      alt: "Zapatillas deportivas para running",
-      titulo: "Desatá tu potencial.",
-      descripcion: "Encontrá el impulso que necesitás en cada paso.",
-      boton: { texto: "Explorá ahora", color: "#00CFFF" },
+      alt: t("carousel.slide1.alt"),
+      titulo: t("carousel.slide1.title"),
+      descripcion: t("carousel.slide1.description"),
+      boton: { texto: t("carousel.slide1.button"), color: "#00CFFF" },
     },
     {
       img: "img/AD-1689.jpg",
-      alt: "Zapatillas de training de alto rendimiento",
-      titulo: "Corré sin límites.",
-      descripcion: "Diseñadas para tu máximo rendimiento.",
-      boton: { texto: "Ver modelos", color: "#FF5733" },
+      alt: t("carousel.slide2.alt"),
+      titulo: t("carousel.slide2.title"),
+      descripcion: t("carousel.slide2.description"),
+      boton: { texto: t("carousel.slide2.button"), color: "#FF5733" },
     },
     {
       img: "img/UN-0512.jpg",
-      alt: "Calzado deportivo versátil",
-      titulo: "Entrená más fuerte.",
-      descripcion: "La comodidad y soporte que tus entrenamientos merecen.",
-      boton: { texto: "Conocé más", color: "#7FFF00", textoColor: "#000000" },
+      alt: t("carousel.slide3.alt"),
+      titulo: t("carousel.slide3.title"),
+      descripcion: t("carousel.slide3.description"),
+      boton: {
+        texto: t("carousel.slide3.button"),
+        color: "#7FFF00",
+        textoColor: "#000000",
+      },
     },
     {
       img: "img/NI-0983.jpg",
-      alt: "Zapatillas con excelente amortiguación",
-      titulo: "Dominá cada movimiento.",
-      descripcion: "Amortiguación superior para tu mejor desempeño.",
-      boton: { texto: "Comprar", color: "#00CFFF" },
+      alt: t("carousel.slide4.alt"),
+      titulo: t("carousel.slide4.title"),
+      descripcion: t("carousel.slide4.description"),
+      boton: { texto: t("carousel.slide4.button"), color: "#00CFFF" },
     },
     {
       img: "img/AD-2241.jpg",
-      alt: "Zapatillas para trail running",
-      titulo: "Explorá cada camino.",
-      descripcion: "Agarre y resistencia para tus aventuras outdoor.",
-      boton: { texto: "Descubrí", color: "#FF5733" },
+      alt: t("carousel.slide5.alt"),
+      titulo: t("carousel.slide5.title"),
+      descripcion: t("carousel.slide5.description"),
+      boton: { texto: t("carousel.slide5.button"), color: "#FF5733" },
     },
     {
       img: "img/UN-7594.jpg",
-      alt: "Zapatillas de moda deportiva",
-      titulo: "Tu próxima meta te espera.",
-      descripcion: "El estilo y la performance se unen en un solo calzado.",
+      alt: t("carousel.slide6.alt"),
+      titulo: t("carousel.slide6.title"),
+      descripcion: t("carousel.slide6.description"),
       boton: {
-        texto: "Ver colección",
+        texto: t("carousel.slide6.button"),
         color: "#7FFF00",
         textoColor: "#000000",
       },
@@ -56,9 +62,7 @@ const CarouselExclusivos = () => {
 
   return (
     <section className="container exclusivos">
-      <h2 className="text-center my-5">
-        Modelos Exclusivos – Solo Venta On-line
-      </h2>
+      <h2 className="text-center my-5">{t("carousel.sectionTitle")}</h2>
       <div className="row justify-content-center">
         <div className="col-md-10 col-lg-8">
           <Carousel variant="dark">
@@ -69,7 +73,7 @@ const CarouselExclusivos = () => {
                   <h5>{slide.titulo}</h5>
                   <p>{slide.descripcion}</p>
                   <Link
-                    to="/Productos"
+                    to="/productos"
                     className="btn btn-primary"
                     style={{
                       backgroundColor: slide.boton.color,

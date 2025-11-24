@@ -1,49 +1,52 @@
+import { useTranslation } from "react-i18next";
 import Formulario from "../components/Formulario";
 import estanteImg from "/img/estante3903371.jpg";
 
 function Contacto() {
+  const { t } = useTranslation();
+
   return (
     <main className="contenedor seccion">
       <picture>
         <source srcSet={estanteImg} type="image/jpeg" />
         <img
           src={estanteImg}
-          alt="Contacto"
+          alt={t("contact.imageAlt")}
           className="contacto-img"
           loading="lazy"
         />
       </picture>
+
       <Formulario
-        titulo="Llene el Formulario de Contacto"
+        titulo={t("contact.formTitle")}
         action="https://formspree.io/f/xrbkooqa"
         campos={[
           {
-            label: "Nombre",
+            label: t("contact.fields.name.label"),
             name: "nombre",
             type: "text",
-            placeholder: "Tu Nombre",
+            placeholder: t("contact.fields.name.placeholder"),
             required: true,
           },
           {
-            label: "E-mail",
+            label: t("contact.fields.email.label"),
             name: "email",
             type: "email",
-            placeholder: "Tu Email",
+            placeholder: t("contact.fields.email.placeholder"),
             required: true,
           },
           {
-            label: "Teléfono",
+            label: t("contact.fields.phone.label"),
             name: "telefono",
             type: "tel",
-            placeholder: "Tu Teléfono",
+            placeholder: t("contact.fields.phone.placeholder"),
             required: false,
           },
         ]}
         mensaje=""
-        botonTexto="Enviar"
+        botonTexto={t("contact.submit")}
         incluirSuscripcion={true}
       />
-      {/* contenido del formulario */}
     </main>
   );
 }

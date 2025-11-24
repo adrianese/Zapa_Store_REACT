@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import "./ProductoCard.css";
 
-const ProductoCard = ({
-  producto,
-  enCarrito,
-  onToggleCarrito
-}) => {
-  const [talle, setTalle] = useState('');
+const ProductoCard = ({ producto, onToggleCarrito }) => {
+  const [talle, setTalle] = useState("");
+  const { t } = useTranslation();
 
   return (
     <div className="producto">
@@ -25,10 +23,12 @@ const ProductoCard = ({
 
         <div className="contenido-anuncio">
           <Link to={`/producto/${producto.id}`} className="boton-detalle">
-            Ver Detalles
+            {t("product.details")}
           </Link>
           <h2 className="producto-nombre">{producto.nombre.toUpperCase()}</h2>
-          <p className="modelo">modelo: {producto.imagen.split(".")[0]}</p>
+          <p className="modelo">
+            {t("product.model")}: {producto.imagen.split(".")[0]}
+          </p>
           <p className="precio">$ {producto.precio.toLocaleString("es-AR")}</p>
 
           <div className="iconos-caracteristicas icono-alinear">
@@ -38,30 +38,39 @@ const ProductoCard = ({
                 alt={producto.actividad}
                 title={producto.actividad}
               />
-              <p className="modelo">{producto.actividad}</p>
+              <p className="modelo">{producto.actividad}</p>{" "}
+              {/* Se mantiene en inglés */}
             </div>
+
             <div className="estado-disponible">
               <img
                 src={`img/${producto.disponible ? "true" : "false"}.svg`}
-                alt={producto.disponible}
+                alt={
+                  producto.disponible
+                    ? t("product.available")
+                    : t("product.unavailable")
+                }
               />
               <p className="modelo">
-                {producto.disponible ? "disponible" : "no disponible"}
+                {producto.disponible
+                  ? t("product.available")
+                  : t("product.unavailable")}
               </p>
             </div>
           </div>
 
           <div className="selector-talle">
             <label htmlFor={`talle-${producto.id}`} className="label-talle">
-              Talle
+              {t("product.size")}
             </label>
             <select
+              className="select-talle"
               id={`talle-${producto.id}`}
               value={talle}
               onChange={(e) => setTalle(e.target.value)}
             >
               <option value="" disabled hidden>
-                Seleccione Talle
+                {t("product.selectSize")}
               </option>
               {[...Array(11)].map((_, i) => (
                 <option key={i} value={35 + i}>
@@ -72,14 +81,13 @@ const ProductoCard = ({
           </div>
 
           <button
-            className="boton-amarillo-block"
-            style={{
-              backgroundColor: enCarrito ? "#f84c4cff" : "#e08709",
-              color: enCarrito ? "#333" : "#fff",
+            className="boton-naranja"
+            onClick={() => {
+              onToggleCarrito(producto, talle);
+              setTalle("");
             }}
-            onClick={() => onToggleCarrito(producto, talle)}
           >
-            {enCarrito ? "Quitar del carrito" : "Agregar al carrito"}
+            {t("product.addToCart")}
           </button>
         </div>
       </div>

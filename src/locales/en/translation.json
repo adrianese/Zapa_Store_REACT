@@ -1,0 +1,315 @@
+{
+  "navbar": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About Us",
+    "contact": "Contact",
+    "cart": "Cart 🛒",
+    "logout": "Log out"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "emailLabel": "Send an email to Adrianese",
+    "emailTooltip": "Send email to correo@correo.com",
+    "githubLabel": "Adrianese's GitHub",
+    "githubTooltip": "Visit the project's Git site"
+  },
+  "productsAll": {
+    "sectionTitle": "Our Products",
+    "exclusive": {
+      "title": "Exclusive",
+      "description": "Discover new designs in sports footwear, crafted for multiple demands and disciplines: running, training, outdoor and urban use. The latest arrivals combine technology, comfort and style, adapting to every activity with innovative materials and maximum cushioning. Choose performance without losing aesthetics in every step. Your sport, your shoes!",
+      "badge1": "NEW DESIGNS",
+      "badge2": "JUST ARRIVED"
+    },
+    "all": {
+      "title": "All",
+      "description": "Explore the world of sports footwear with all brands and models available. From iconic classics to cutting-edge innovations, find options for every sport, need and style. Performance, design and technology come together to offer the best movement experience. Choose without limits!",
+      "badge1": "ALL BRANDS",
+      "badge2": "ALL MODELS"
+    },
+    "discontinued": {
+      "title": "Discontinued",
+      "description": "Find sports footwear at the best prices on the market, without sacrificing quality or style. Models for all activities, with technology and comfort within everyone's reach. Available in various sizes, so every step fits you perfectly. Performance, design and accessibility in one place.",
+      "badge1": "BEST PRICES",
+      "badge2": "VARIOUS SIZES"
+    }
+  },
+  "carousel": {
+    "sectionTitle": "Exclusive Models – Online Only",
+    "slide1": {
+      "alt": "Running sports shoes",
+      "title": "Unleash your potential.",
+      "description": "Find the boost you need in every step.",
+      "button": "Explore now"
+    },
+    "slide2": {
+      "alt": "High-performance training shoes",
+      "title": "Run without limits.",
+      "description": "Designed for your peak performance.",
+      "button": "View models"
+    },
+    "slide3": {
+      "alt": "Versatile sports footwear",
+      "title": "Train harder.",
+      "description": "Comfort and support your workouts deserve.",
+      "button": "Learn more"
+    },
+    "slide4": {
+      "alt": "Shoes with excellent cushioning",
+      "title": "Master every move.",
+      "description": "Superior cushioning for your best performance.",
+      "button": "Buy now"
+    },
+    "slide5": {
+      "alt": "Trail running shoes",
+      "title": "Explore every path.",
+      "description": "Grip and endurance for your outdoor adventures.",
+      "button": "Discover"
+    },
+    "slide6": {
+      "alt": "Sport fashion sneakers",
+      "title": "Your next goal awaits.",
+      "description": "Style and performance united in one shoe.",
+      "button": "View collection"
+    }
+  },
+  "search": {
+    "title": "Find the Best Prices on Sneakers",
+    "subtitle": "What Are You Looking For?",
+    "allProducts": "All products",
+    "brand": "Brand",
+    "allBrands": "All brands",
+    "activity": "Activity",
+    "allActivities": "All activities",
+    "price": "Price",
+    "noOrder": "No order",
+    "priceAsc": "Low to high",
+    "priceDesc": "High to low"
+  },
+  "product": {
+    "details": "View Details",
+    "model": "model",
+    "available": "available",
+    "unavailable": "unavailable",
+    "size": "Size",
+    "selectSize": "Select Size",
+    "addToCart": "Add to cart"
+  },
+  "about": {
+    "title": "About Us"
+  },
+  "form": {
+    "personalInfo": "Personal Information",
+    "message": "Message",
+    "messagePlaceholder": "Your message",
+    "subscriptionTitle": "Would you like to receive updates?",
+    "subscriptionPrompt": "Choose an option",
+    "subscribe": "Subscribe me",
+    "unsubscribe": "Unsubscribe me",
+    "error": "There was an error submitting the form.",
+    "errorSend": "The form could not be sent."
+  },
+  "contact": {
+    "imageAlt": "Contact",
+    "formTitle": "Fill Out the Contact Form",
+    "submit": "Send",
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your Name"
+      },
+      "email": {
+        "label": "E-mail",
+        "placeholder": "Your Email"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "Your Phone"
+      }
+    }
+  },
+  "register": {
+    "title": "Register",
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password"
+    },
+    "submit": "Sign up",
+    "loginPrompt": "Already have an account?",
+    "loginLink": "Log in",
+    "alerts": {
+      "emailExists": {
+        "title": "Email already registered",
+        "text": "Please log in to continue.",
+        "button": "Go to login"
+      },
+      "success": {
+        "title": "Registration successful",
+        "text": "You can now log in.",
+        "button": "Go to login"
+      },
+      "error": {
+        "title": "Connection error",
+        "text": "Registration could not be completed."
+      }
+    }
+  },
+  "orders": {
+    "title": "My Orders",
+    "loginRequired": "You must be logged in to view your purchases.",
+    "noOrders": "You have no registered purchases.",
+    "invoice": "Invoice",
+    "date": "Date",
+    "status": "Status",
+    "total": "Total",
+    "model": "Model",
+    "size": "Size",
+    "quantity": "Quantity",
+    "alerts": {
+      "error": {
+        "title": "Error",
+        "text": "Your purchases could not be loaded."
+      }
+    }
+  },
+  "cart": {
+    "title": "Purchase Summary",
+    "empty": "There are no products in the cart.",
+    "size": "Size",
+    "total": "Total",
+    "loginPrompt": "Log in to confirm your purchase",
+    "email": "Email",
+    "password": "Password",
+    "continue": "Continue",
+    "confirmation": "Order Confirmation",
+    "name": "Name",
+    "summary": "Order Summary",
+    "yourOrder": "Your Order",
+    "confirm": "Confirm Purchase",
+    "noAccount": "Not registered yet?",
+    "register": "Sign up",
+    "alerts": {
+      "welcome": {
+        "title": "Welcome!",
+        "text": "Redirecting to your purchases..."
+      },
+      "admin": {
+        "title": "Access Denied",
+        "text": "Administrators cannot make purchases. Redirecting to admin panel..."
+      },
+      "authError": {
+        "title": "Authentication Error",
+        "text": "Incorrect email or password."
+      },
+      "noUser": "Authenticated user not found.",
+      "success": {
+        "title": "Purchase Confirmed!"
+      },
+      "submitError": "Your order could not be registered."
+    }
+  },
+  "products": {
+    "compareButton": "Compare Selected",
+    "viewCart": "View Cart",
+    "scrollTop": "Scroll to top",
+    "alerts": {
+      "loadError": {
+        "title": "Loading Error",
+        "text": "Products could not be loaded. Please try again later."
+      },
+      "unavailable": {
+        "title": "Product Unavailable",
+        "text": "This product is not available."
+      },
+      "sizeRequired": {
+        "title": "Size Required",
+        "text": "Please select a size before continuing."
+      },
+      "alreadyAdded": {
+        "title": "Already Added",
+        "text": "This product in size {{size}} is already in the cart."
+      }
+    }
+  },
+  "comparison": {
+    "title": "Product Comparison",
+    "activity": "Activity",
+    "price": "Price",
+    "available": "Availability",
+    "yes": "Yes",
+    "no": "No",
+    "close": "Close"
+  },
+  "login": {
+    "title": "Log In",
+    "fields": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "submit": "Log In",
+    "registerPrompt": "Not registered yet?",
+    "registerLink": "Sign up",
+    "alerts": {
+      "notFound": {
+        "title": "User not found",
+        "text": "Would you like to register?",
+        "confirm": "Go to registration",
+        "cancel": "Cancel"
+      },
+      "authError": {
+        "title": "Authentication Error",
+        "text": "Could not log in."
+      },
+      "error": {
+        "title": "Error",
+        "text": "User verification failed."
+      }
+    }
+  },
+  "home": {
+    "videoFallback": "Your browser does not support HTML5 video."
+  },
+  "error": {
+    "title": "- Page Not Found -",
+    "description": "The route you are looking for does not exist."
+  },
+  "productDetail": {
+    "notFound": "Product not found.",
+    "loading": "Loading...",
+    "model": "Model",
+    "activity": "Activity",
+    "availability": "Availability",
+    "inStock": "In stock",
+    "outOfStock": "Out of stock",
+    "sizes": "Available sizes",
+    "noSizes": "none!",
+    "recommendedActivity": "Recommended activity",
+    "materialBenefits": "Benefits and materials",
+    "back": "Back to products"
+  },
+  "modal": {
+    "title": "Cart Summary",
+    "empty": "There are no products in the cart.",
+    "model": "Model",
+    "size": "Size",
+    "quantity": "Quantity",
+    "total": "Total",
+    "clear": "Clear Cart",
+    "confirm": "Confirm Purchase",
+    "selectSize": "Select a size",
+    "add": "Add",
+    "cancel": "Cancel"
+  },
+  "guiaTalles": {
+    "button": "Size Guide – Shoes",
+    "title": "Size Guide – Shoes",
+    "columns": {
+      "cm": "cm",
+      "eur": "EUR",
+      "arg": "ARG",
+      "usa": "USA"
+    }
+  }
+}

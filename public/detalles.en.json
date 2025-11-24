@@ -1,0 +1,60 @@
+{
+  "productos_deportivos": [
+    {
+      "marca": "Adedos",
+      "actividad_apta": [
+        "The ADEDOS brand redefines urban comfort with sneakers designed for everyday use. Their modern aesthetic and clean lines make them the perfect complement for those seeking style without sacrificing functionality.",
+        "Ideal for long walks or spending the whole day on the move, ADEDOS sneakers combine lightness and anatomical support, providing a smooth and fatigue-free wearing experience."
+      ],
+      "beneficios_materiales": [
+        "Made with high-quality synthetic materials and breathable mesh, ADEDOS sneakers offer excellent ventilation and resistance to daily wear.",
+        "The antimicrobial textile finish and reinforcements in key areas ensure durability, hygiene, and a comfortable fit from the very first use."
+      ]
+    },
+    {
+      "marca": "Niko",
+      "actividad_apta": [
+        "NIKO sneakers are designed for runners who demand performance and style. Their dynamic structure enhances propulsion and stability with every stride.",
+        "Advanced impact absorption and traction technology allow running on various terrains without compromising safety or comfort."
+      ],
+      "beneficios_materiales": [
+        "Built with high-resistance technical fabrics and heat-sealed reinforcements, NIKO sneakers withstand demanding use without losing flexibility.",
+        "The energy-return midsole and ergonomic insole maximize performance in every running session."
+      ]
+    },
+    {
+      "marca": "Under A",
+      "actividad_apta": [
+        "The UNDER A brand is synonymous with adventure. Their trekking shoes are designed to tackle tough terrains, changing climates, and long journeys.",
+        "With a robust structure and multidirectional grip sole, they offer security with every step—whether in mountains, forests, or rocky trails."
+      ],
+      "beneficios_materiales": [
+        "Waterproof synthetic leather and sealed seams protect against moisture, mud, and abrasion, keeping feet dry and safe.",
+        "The memory foam padded interior and reinforced adjustment system ensure long-lasting comfort and structural support during demanding hikes."
+      ]
+    },
+    {
+      "marca": "TorPe",
+      "actividad_apta": [
+        "The TorPe brand celebrates national design with footwear made for those who value comfort, ecological awareness, and functional style. Its sober and modern aesthetic adapts to any urban routine.",
+        "Their versatility makes them ideal for both everyday activities and outdoor getaways, always maintaining a balanced and responsible visual presence."
+      ],
+      "beneficios_materiales": [
+        "Crafted with recycled materials and low-impact fabrics, TorPe sneakers promote sustainable fashion without compromising durability.",
+        "The lightweight expanded rubber sole provides effective cushioning and secure traction, ideal for urban and natural surfaces.",
+        "The padded interior and breathable fabric ensure freshness, hygiene, and prolonged comfort—even during intense days."
+      ]
+    },
+    {
+      "marca": "Dadora",
+      "actividad_apta": [
+        "Dadora represents excellence in premium sports footwear, blending sophisticated design with comfort technology. Each pair is crafted for those who demand the best in every step.",
+        "Ideal for intense training, long walks, or stylish everyday use, Dadora sneakers offer an ultra-light and anatomical wearing experience."
+      ],
+      "beneficios_materiales": [
+        "Made with the finest materials on the market, such as next-generation technical fabrics and strategic reinforcements, Dadora sneakers guarantee superior resistance and comfort.",
+        "The memory foam inner lining with antimicrobial properties provides a personalized, fresh, and irritation-free fit from the first use."
+      ]
+    }
+  ]
+}

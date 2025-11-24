@@ -1,56 +1,68 @@
-// src/context/AuthProvider.jsx
 import React, { useState, useEffect, useContext } from "react";
-import { AuthContext } from "./AuthContext";
+import AuthContext from "./AuthContext";
 
-export function AuthProvider({ children }) {
-  const [usuario, setUsuario] = useState({ nombre: "", email: "" });
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+export const AuthProvider = ({ children }) => {
+  const [usuario, setUsuario] = useState(() => {
+    const storedUser = localStorage.getItem("usuario");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
+  // Cargar usuario desde localStorage al iniciar
   useEffect(() => {
-    const guardado = localStorage.getItem("usuario");
-    if (guardado) {
-      const datos = JSON.parse(guardado);
-      if (datos.nombre && datos.email) {
-        setUsuario(datos);
-        setIsAuthenticated(true);
-      }
+    const storedUser = localStorage.getItem("usuario");
+    if (storedUser) {
+      setUsuario(JSON.parse(storedUser));
     }
   }, []);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      localStorage.setItem("usuario", JSON.stringify(usuario));
-    } else {
-      localStorage.removeItem("usuario");
-    }
-  }, [isAuthenticated, usuario]);
+  const login = async (email, password) => {
+    try {
+      const res = await fetch(
+        "https://68e448c88e116898997b75e3.mockapi.io/api/productos/users"
+      );
+      if (!res.ok) throw new Error("Error al obtener usuarios");
 
-  const login = (nombre, email) => {
-    const nombreValido = nombre?.trim();
-    const emailValido = email?.trim();
+      const usuarios = await res.json();
+      const usuarioEncontrado = usuarios.find(
+        (u) => u.email === email && u.password === password
+      );
 
-    if (nombreValido && emailValido) {
-      setUsuario({ nombre: nombreValido, email: emailValido });
-      setIsAuthenticated(true);
-      return true;
+      if (usuarioEncontrado) {
+        setUsuario(usuarioEncontrado);
+        localStorage.setItem("usuario", JSON.stringify(usuarioEncontrado));
+        return {
+          exito: true,
+          rol: usuarioEncontrado.rol || "usuario",
+          mensaje: "",
+        };
+      }
+
+      return {
+        exito: false,
+        rol: null,
+        mensaje: "Usuario no encontrado o credenciales incorrectas.",
+      };
+    } catch (error) {
+      console.error("Error en login:", error);
+      return {
+        exito: false,
+        rol: null,
+        mensaje: "Error de conexión con el servidor.",
+      };
     }
-    return false;
   };
 
   const logout = () => {
-    setUsuario({ nombre: "", email: "" });
-    setIsAuthenticated(false);
+    setUsuario(null);
     localStorage.removeItem("usuario");
   };
 
+  const isAuthenticated = !!usuario;
+
   return (
-    <AuthContext.Provider value={{ usuario, isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ usuario, login, logout, isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
-
-export function useAuth() {
-  return useContext(AuthContext);
-}
+export const useAuth = () => useContext(AuthContext);

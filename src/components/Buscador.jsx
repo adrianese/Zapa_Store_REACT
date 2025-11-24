@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import './Buscador.css'; // si tenés estilos específicos
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import "./Buscador.css";
 
 const Buscador = ({ productos, onFiltrar }) => {
-  const [marcaSeleccionada, setMarcaSeleccionada] = useState('');
-  const [actividadSeleccionada, setActividadSeleccionada] = useState('');
-  const [ordenPrecio, setOrdenPrecio] = useState('');
+  const { t } = useTranslation();
+
+  const [marcaSeleccionada, setMarcaSeleccionada] = useState("");
+  const [actividadSeleccionada, setActividadSeleccionada] = useState("");
+  const [ordenPrecio, setOrdenPrecio] = useState("");
 
   const [marcas, setMarcas] = useState([]);
   const [actividades, setActividades] = useState([]);
 
-  // Cargar opciones únicas de marca y actividad
   useEffect(() => {
     const marcasUnicas = [...new Set(productos.map((p) => p.nombre))];
     const actividadesUnicas = [...new Set(productos.map((p) => p.actividad))];
@@ -17,48 +19,53 @@ const Buscador = ({ productos, onFiltrar }) => {
     setActividades(actividadesUnicas);
   }, [productos]);
 
-  // Aplicar filtros
   useEffect(() => {
     let filtrados = productos.filter(
       (p) =>
-        (marcaSeleccionada === '' || p.nombre === marcaSeleccionada) &&
-        (actividadSeleccionada === '' || p.actividad === actividadSeleccionada)
+        (marcaSeleccionada === "" || p.nombre === marcaSeleccionada) &&
+        (actividadSeleccionada === "" || p.actividad === actividadSeleccionada)
     );
 
-    if (ordenPrecio === 'asc') {
+    if (ordenPrecio === "asc") {
       filtrados.sort((a, b) => a.precio - b.precio);
-    } else if (ordenPrecio === 'desc') {
+    } else if (ordenPrecio === "desc") {
       filtrados.sort((a, b) => b.precio - a.precio);
     }
 
     onFiltrar(filtrados);
-  }, [marcaSeleccionada, actividadSeleccionada, ordenPrecio, productos, onFiltrar]);
+  }, [
+    marcaSeleccionada,
+    actividadSeleccionada,
+    ordenPrecio,
+    productos,
+    onFiltrar,
+  ]);
 
   return (
     <section className="formulario buscador">
-      <h2>Encontrá los Mejores Precios en Zapatillas</h2>
-      <h3>¿Qué Estás Buscando?</h3>
+      <h2>{t("search.title")}</h2>
+      <h3>{t("search.subtitle")}</h3>
 
       <div className="input-buscador">
         <button
           className="boton-verde boton-redondeado"
           onClick={() => {
-            setMarcaSeleccionada('');
-            setActividadSeleccionada('');
-            setOrdenPrecio('');
+            setMarcaSeleccionada("");
+            setActividadSeleccionada("");
+            setOrdenPrecio("");
             onFiltrar(productos);
           }}
         >
-          Todos los productos
+          {t("search.allProducts")}
         </button>
 
         <label>
-          Marca:
+          {t("search.brand")}:
           <select
             value={marcaSeleccionada}
             onChange={(e) => setMarcaSeleccionada(e.target.value)}
           >
-            <option value="">Todas las marcas</option>
+            <option value="">{t("search.allBrands")}</option>
             {marcas.map((marca) => (
               <option key={marca} value={marca}>
                 {marca}
@@ -68,29 +75,29 @@ const Buscador = ({ productos, onFiltrar }) => {
         </label>
 
         <label>
-          Actividad:
+          {t("search.activity")}:
           <select
             value={actividadSeleccionada}
             onChange={(e) => setActividadSeleccionada(e.target.value)}
           >
-            <option value="">Todas las actividades</option>
+            <option value="">{t("search.allActivities")}</option>
             {actividades.map((act) => (
               <option key={act} value={act}>
-                {act}
+                {act} {/* Se mantiene en inglés */}
               </option>
             ))}
           </select>
         </label>
 
         <label>
-          Precio:
+          {t("search.price")}:
           <select
             value={ordenPrecio}
             onChange={(e) => setOrdenPrecio(e.target.value)}
           >
-            <option value="">Sin orden</option>
-            <option value="asc">Menor a mayor</option>
-            <option value="desc">Mayor a menor</option>
+            <option value="">{t("search.noOrder")}</option>
+            <option value="asc">{t("search.priceAsc")}</option>
+            <option value="desc">{t("search.priceDesc")}</option>
           </select>
         </label>
       </div>

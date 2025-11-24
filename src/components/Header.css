@@ -1,19 +1,10 @@
 
 
-/* header.css */
-
 /* Contenedor principal */
 .header {
     background-color: #fce8ca;
     padding: 2rem 0;
     border-bottom: 1px solid #ccc;
-}
-
-/* Estructura interna */
-.contenido-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .barra {
@@ -40,22 +31,23 @@
 /* Navegación */
 .navegacion {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
+    align-items: center;
 }
 
 .navegacion a {
-    font-size: 1.6rem;
-    color: #333;
+    color: #ffffff;
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    display: block;
+    text-align: center;
+    margin-right: 2rem;
+    font-size: 1.4rem;
+    transition: color 0.2s ease-in-out;
 }
 
 .navegacion a:hover {
-    color: #71b100;
+    color: #eba543;
 }
+
 
 /* Carrito */
 .carrito {
@@ -127,24 +119,6 @@
     cursor: pointer;
 }
 
-.navegacion {
-    display: flex;
-    align-items: center;
-}
-
-.navegacion a {
-    color: #ffffff;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-    margin-right: 2rem;
-    font-size: 1.4rem;
-    transition: color 0.2s ease-in-out;
-}
-
-.navegacion a:hover {
-    color: #eba543;
-}
 
 .link-h1 {
     text-decoration: none;
@@ -155,15 +129,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
-/*a {
-    color: #FFFFFF;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-    margin-right: 2rem;
-    font-size: 1.4rem;
-}*/
 
 
 

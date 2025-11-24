@@ -1,0 +1,337 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    "products": "Productos",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "cart": "Carrito 🛒",
+    "logout": "Cerrar sesión"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados",
+    "emailLabel": "Enviar un correo a Adrianese",
+    "emailTooltip": "Enviar correo a correo@correo.com",
+    "githubLabel": "GitHub de Adrianese",
+    "githubTooltip": "Visita el sitio Git del proyecto"
+  },
+  "productsAll": {
+    "sectionTitle": "Nuestros Productos",
+    "exclusive": {
+      "title": "Exclusivos",
+      "description": "Descubrí los nuevos diseños en calzado deportivo, pensados para múltiples exigencias y disciplinas: running, entrenamiento, outdoor y uso urbano. Los recién llegados combinan tecnología, confort y estilo, adaptándose a cada actividad con materiales innovadores y máxima amortiguación. Elegí rendimiento sin perder estética en cada paso. ¡Tu deporte, tu calzado!",
+      "badge1": "NUEVOS DISEÑOS",
+      "badge2": "RECIÉN LLEGADOS"
+    },
+    "all": {
+      "title": "Todos",
+      "description": "Explorá el universo del calzado deportivo con todas las marcas y todos los modelos disponibles. Desde clásicos reconocidos hasta innovaciones de última generación, encontrá opciones para cada deporte, exigencia y estilo. Rendimiento, diseño y tecnología se unen para ofrecerte la mejor experiencia en movimiento. ¡Elegí sin límites!",
+      "badge1": "TODAS LAS MARCAS",
+      "badge2": "TODOS LOS MODELOS"
+    },
+    "discontinued": {
+      "title": "Discontinuos",
+      "description": "Encontrá calzado deportivo con los mejores precios del mercado, sin resignar calidad ni estilo. Modelos para todas las actividades, con tecnología y confort al alcance de todos. Disponibles en varios talles, para que cada paso se ajuste perfectamente a vos. Rendimiento, diseño y accesibilidad en un solo lugar.",
+      "badge1": "MEJORES PRECIOS",
+      "badge2": "VARIOS TALLES"
+    }
+  },
+  "carousel": {
+    "sectionTitle": "Modelos Exclusivos – Solo Venta On-line",
+    "slide1": {
+      "alt": "Zapatillas deportivas para running",
+      "title": "Desatá tu potencial.",
+      "description": "Encontrá el impulso que necesitás en cada paso.",
+      "button": "Explorá ahora"
+    },
+    "slide2": {
+      "alt": "Zapatillas de training de alto rendimiento",
+      "title": "Corré sin límites.",
+      "description": "Diseñadas para tu máximo rendimiento.",
+      "button": "Ver modelos"
+    },
+    "slide3": {
+      "alt": "Calzado deportivo versátil",
+      "title": "Entrená más fuerte.",
+      "description": "La comodidad y soporte que tus entrenamientos merecen.",
+      "button": "Conocé más"
+    },
+    "slide4": {
+      "alt": "Zapatillas con excelente amortiguación",
+      "title": "Dominá cada movimiento.",
+      "description": "Amortiguación superior para tu mejor desempeño.",
+      "button": "Comprar"
+    },
+    "slide5": {
+      "alt": "Zapatillas para trail running",
+      "title": "Explorá cada camino.",
+      "description": "Agarre y resistencia para tus aventuras outdoor.",
+      "button": "Descubrí"
+    },
+    "slide6": {
+      "alt": "Zapatillas de moda deportiva",
+      "title": "Tu próxima meta te espera.",
+      "description": "El estilo y la performance se unen en un solo calzado.",
+      "button": "Ver colección"
+    }
+  },
+  "search": {
+    "title": "Encontrá los Mejores Precios en Zapatillas",
+    "subtitle": "¿Qué Estás Buscando?",
+    "allProducts": "Todos los productos",
+    "brand": "Marca",
+    "allBrands": "Todas las marcas",
+    "activity": "Actividad",
+    "allActivities": "Todas las actividades",
+    "price": "Precio",
+    "noOrder": "Sin orden",
+    "priceAsc": "Menor a mayor",
+    "priceDesc": "Mayor a menor"
+  },
+  "product": {
+    "details": "Ver Detalles",
+    "model": "modelo",
+    "available": "disponible",
+    "unavailable": "no disponible",
+    "size": "Talle",
+    "selectSize": "Seleccione Talle",
+    "addToCart": "Agregar al carrito"
+  },
+  "about": {
+    "title": "Nosotros"
+  },
+  "form": {
+    "personalInfo": "Información Personal",
+    "message": "Mensaje",
+    "messagePlaceholder": "Tu mensaje",
+    "subscriptionTitle": "¿Desea recibir novedades?",
+    "subscriptionPrompt": "Elija una opción",
+    "subscribe": "Suscribirme",
+    "unsubscribe": "Desuscribirme",
+    "error": "Hubo un error al enviar el formulario.",
+    "errorSend": "No se pudo enviar el formulario."
+  },
+  "contact": {
+    "imageAlt": "Contacto",
+    "formTitle": "Llene el Formulario de Contacto",
+    "submit": "Enviar",
+    "fields": {
+      "name": {
+        "label": "Nombre",
+        "placeholder": "Tu Nombre"
+      },
+      "email": {
+        "label": "E-mail",
+        "placeholder": "Tu Email"
+      },
+      "phone": {
+        "label": "Teléfono",
+        "placeholder": "Tu Teléfono"
+      }
+    }
+  },
+  "register": {
+    "title": "Registro",
+    "fields": {
+      "name": "Nombre",
+      "email": "Correo",
+      "password": "Contraseña"
+    },
+    "submit": "Registrarse",
+    "loginPrompt": "¿Ya tenés una cuenta?",
+    "loginLink": "Ingresá",
+    "alerts": {
+      "emailExists": {
+        "title": "Correo ya registrado",
+        "text": "Iniciá sesión para continuar.",
+        "button": "Ir al login"
+      },
+      "success": {
+        "title": "Registro exitoso",
+        "text": "Ya podés iniciar sesión.",
+        "button": "Ir al login"
+      },
+      "error": {
+        "title": "Error de conexión",
+        "text": "No se pudo completar el registro."
+      }
+    }
+  },
+  "orders": {
+    "title": "Mis Compras",
+    "loginRequired": "Debes iniciar sesión para ver tus compras.",
+    "noOrders": "No tenés compras registradas.",
+    "invoice": "Factura",
+    "date": "Fecha",
+    "status": "Estado",
+    "total": "Total",
+    "model": "Modelo",
+    "size": "Talle",
+    "quantity": "Cantidad",
+    "alerts": {
+      "error": {
+        "title": "Error",
+        "text": "No se pudieron cargar tus compras."
+      }
+    }
+  },
+  "checkout": {
+    "title": "Confirmar Compra",
+    "empty": "No hay productos en el carrito.",
+    "size": "Talle",
+    "quantity": "Cantidad",
+    "total": "Total",
+    "confirm": "Confirmar Pedido",
+    "alerts": {
+      "login": {
+        "title": "Inicia sesión",
+        "text": "Debes iniciar sesión para confirmar tu compra."
+      },
+      "success": {
+        "title": "Compra confirmada",
+        "text": "Tu pedido fue registrado correctamente."
+      },
+      "error": {
+        "title": "Error",
+        "text": "No se pudo registrar tu pedido."
+      }
+    }
+  },
+  "cart": {
+    "title": "Resumen de Compra",
+    "empty": "No hay productos en el carrito.",
+    "size": "Talle",
+    "total": "Total",
+    "loginPrompt": "Iniciá sesión para confirmar la compra",
+    "email": "Correo",
+    "password": "Contraseña",
+    "continue": "Continuar",
+    "confirmation": "Confirmación de Pedido",
+    "name": "Nombre",
+    "summary": "Resumen del Pedido",
+    "yourOrder": "Tu Pedido",
+    "confirm": "Confirmar Compra",
+    "noAccount": "¿No estás registrado?",
+    "register": "Registrate",
+    "alerts": {
+      "welcome": {
+        "title": "¡Bienvenido!",
+        "text": "Redirigiendo a tus compras..."
+      },
+      "admin": {
+        "title": "Acceso denegado",
+        "text": "Los administradores no pueden comprar. Redirigiendo al panel de admin..."
+      },
+      "authError": {
+        "title": "Error de autenticación",
+        "text": "Correo o contraseña incorrectos."
+      },
+      "noUser": "No se encontró el usuario autenticado.",
+      "success": {
+        "title": "¡Compra confirmada!"
+      },
+      "submitError": "No se pudo registrar el pedido."
+    }
+  },
+  "products": {
+    "compareButton": "Comparar Seleccionados",
+    "viewCart": "Ver Carrito",
+    "scrollTop": "Ir arriba",
+    "alerts": {
+      "loadError": {
+        "title": "Error de carga",
+        "text": "No se pudieron obtener los productos. Intenta nuevamente más tarde."
+      },
+      "unavailable": {
+        "title": "Producto no disponible",
+        "text": "Este producto no está disponible."
+      },
+      "sizeRequired": {
+        "title": "Talle requerido",
+        "text": "Seleccioná un talle antes de continuar."
+      },
+      "alreadyAdded": {
+        "title": "Ya agregado",
+        "text": "Este producto en talle {{size}} ya está en el carrito."
+      }
+    }
+  },
+  "comparison": {
+    "title": "Comparación de Productos",
+    "activity": "Actividad",
+    "price": "Precio",
+    "available": "Disponibilidad",
+    "yes": "Sí",
+    "no": "No",
+    "close": "Cerrar"
+  },
+  "login": {
+    "title": "Iniciar Sesión",
+    "fields": {
+      "email": "Correo",
+      "password": "Contraseña"
+    },
+    "submit": "Ingresar",
+    "registerPrompt": "¿No estás registrado?",
+    "registerLink": "Registrate",
+    "alerts": {
+      "notFound": {
+        "title": "Usuario no encontrado",
+        "text": "¿Querés registrarte?",
+        "confirm": "Ir al registro",
+        "cancel": "Cancelar"
+      },
+      "authError": {
+        "title": "Error de autenticación",
+        "text": "No se pudo iniciar sesión."
+      },
+      "error": {
+        "title": "Error",
+        "text": "No se pudo verificar el usuario."
+      }
+    }
+  },
+  "home": {
+    "videoFallback": "Tu navegador no soporta el video HTML5."
+  },
+  "error": {
+    "title": "- Página no encontrada -",
+    "description": "La ruta que estás buscando no existe."
+  },
+  "productDetail": {
+    "notFound": "Producto no encontrado.",
+    "loading": "Cargando...",
+    "model": "Modelo",
+    "activity": "Actividad",
+    "availability": "Disponibilidad",
+    "inStock": "En stock",
+    "outOfStock": "Agotado",
+    "sizes": "Talles disponibles",
+    "noSizes": "ninguno!",
+    "recommendedActivity": "Actividad más recomendada",
+    "materialBenefits": "Beneficios y materiales",
+    "back": "Volver a productos"
+  },
+  "modal": {
+    "title": "Resumen del Carrito",
+    "empty": "No hay productos en el carrito.",
+    "model": "Modelo",
+    "size": "Talle",
+    "quantity": "Cantidad",
+    "total": "Total",
+    "clear": "Vaciar Carrito",
+    "confirm": "Confirmar Compra",
+    "selectSize": "Seleccioná el talle",
+    "add": "Agregar",
+    "cancel": "Cancelar"
+  }, "guiaTalles": {
+    "button": "Guía de Talles – Calzado",
+    "title": "Guía de Talles – Calzado",
+    "columns": {
+      "cm": "cm",
+      "eur": "EUR",
+      "arg": "ARG",
+      "usa": "USA"
+    }
+  }
+
+}
