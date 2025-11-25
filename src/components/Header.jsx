@@ -42,10 +42,10 @@ const Header = () => {
               {t("navbar.products")}
             </NavLink>
             <NavLink
-              to="/nosotros"
+              to="/login"
               className={({ isActive }) => (isActive ? "activo" : "")}
             >
-              {t("navbar.about")}
+              {t("navbar.login")}
             </NavLink>
             <NavLink
               to="/contacto"

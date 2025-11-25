@@ -5,7 +5,6 @@ import ProductoCard from "../components/ProductoCard";
 import Buscador from "../components/Buscador";
 import ModalComparacion from "../components/ModalComparacion";
 import CarritoModal from "../components/CarritoModal";
-import TablaTalles from "../components/TablaTalles";
 import GuiaTallesModal from "../components/GuiaTallesModal";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
