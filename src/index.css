@@ -793,3 +793,15 @@ p{
     padding: 6rem;
     margin-bottom: -3rem;
 }
+
+
+
+
+@media (max-width: 480px) {
+  .form-container {
+    width: 90%;
+  }
+  .boton-verde {
+    width: 80%;
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 const Container = styled.div`
   max-width: 800px;
@@ -99,7 +99,11 @@ const PedidoLeft = styled.div`
 const PedidoRight = styled.div`
   flex: 1;
 `;
-
+const TopActions = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+`;
 const PedidoFooterLine = styled.div`
   display: flex;
   justify-content: space-between;
@@ -108,6 +112,43 @@ const PedidoFooterLine = styled.div`
   font-weight: bold;
   color: var(--text-color);
 `;
+const ButtonBase = css`
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+  padding: 1rem 2rem;
+  border-radius: 0.8rem;
+  margin: 0.5rem 0;
+  align-self: flex-start;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+
+const BotonVerde = styled.button`
+  ${ButtonBase}
+  background-color: #71b100;
+
+  &:hover {
+    background-color: #619800;
+  }
+`;
+
+const BotonAmarillo = styled.button`
+  ${ButtonBase}
+  background-color: #c77808;
+
+  &:hover {
+    background-color: #a86106;
+  }
+`;
+
 
 const PedidosAdmin = () => {
   const [pedidos, setPedidos] = useState([]);
@@ -168,8 +209,14 @@ const PedidosAdmin = () => {
 
   return (
     <Container>
-      <h1>Pedidos de Clientes</h1>
+      <TopActions>
+        
+        <BotonAmarillo type="button" onClick={() => window.history.back()}>
+          Volver
+        </BotonAmarillo>
+      </TopActions>
 
+      <h1>Pedidos de Clientes</h1>
       <ClientesResumen>
         {Object.keys(clientesMap).map((nombre) => (
           <ClienteCard key={nombre} onClick={() => scrollToCliente(nombre)}>
@@ -177,7 +224,6 @@ const PedidosAdmin = () => {
           </ClienteCard>
         ))}
       </ClientesResumen>
-
       <PedidosLista>
         {Object.entries(clientesMap).map(([nombre, pedidos]) => (
           <div key={nombre} ref={clienteRefs.current[nombre]}>

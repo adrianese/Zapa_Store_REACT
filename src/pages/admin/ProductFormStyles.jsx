@@ -1,21 +1,22 @@
 import styled, { css } from "styled-components";
 
-// Helper para estilos comunes de inputs y textareas
+// 🔹 Base para inputs y textareas
 const InputBase = css`
   width: 100%;
   padding: 0.2rem;
   border: 1px solid var(--input-border, #ccc);
   border-radius: 4px;
   background-color: var(--bg-body, #fff);
-  color: var(--text-color, #333);
-  box-sizing: border-box; /* Asegura que el padding no añada ancho extra */
+  color: var(--text-campo, #333); /* corregido */
+  box-sizing: border-box;
 
   &.input-error {
     border-color: red;
+    background-color: #ffe5e5; /* opcional: feedback visual */
   }
 `;
 
-// Estilos del contenedor principal
+// 🔹 Contenedor principal del formulario
 export const FormContainer = styled.div`
   background-color: var(--form-bg, #f7f7f7);
   color: var(--text-color, #333);
@@ -26,9 +27,9 @@ export const FormContainer = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
-// Estilos del grupo de formulario
+// 🔹 Grupo de campos
 export const FormGroup = styled.div`
-  /* margin-bottom: 0.5rem; */
+  margin-bottom: 1rem;
 `;
 
 export const Label = styled.label`
@@ -39,21 +40,20 @@ export const Label = styled.label`
   color: var(--text-color, #333);
 `;
 
-// Estilos para Input
+// 🔹 Inputs y Textareas
 export const Input = styled.input.attrs((props) => ({
   type: props.type || "text",
 }))`
   ${InputBase}
 `;
 
-// Estilos para Textarea
 export const Textarea = styled.textarea`
   ${InputBase}
   min-height: 80px;
   resize: vertical;
 `;
 
-// Estilos para Radio Group
+// 🔹 Radios
 export const RadioGroup = styled.div`
   display: flex;
   gap: 2rem;
@@ -67,7 +67,7 @@ export const RadioGroup = styled.div`
   }
 `;
 
-// Estilos para la vista previa
+// 🔹 Vista previa
 export const PreviewContainer = styled.div`
   margin: 0.5rem 0;
   text-align: left;
@@ -79,7 +79,7 @@ export const PreviewImage = styled.img`
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 `;
 
-// Estilos para la sección de acciones/botones
+// 🔹 Acciones
 export const FormActions = styled.div`
   display: flex;
   justify-content: space-between;
@@ -88,7 +88,7 @@ export const FormActions = styled.div`
   padding: 0 1rem;
 `;
 
-// Estilos base para los botones
+// 🔹 Base para botones
 const ButtonBase = css`
   border: none;
   color: #fff;
@@ -96,27 +96,42 @@ const ButtonBase = css`
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease,
     box-shadow 0.2s ease;
-`;
-
-// Estilos del botón verde (se aplica a todos los botones en FormActions)
-export const BotonVerde = styled.button`
-  ${ButtonBase}
-  background-color: #71b100;
-  padding: 1.5rem 3rem; /* Combina padding de .boton-verde y .redondeado */
-  border-radius: 1rem; /* .redondeado */
-  margin: 2.5rem 0rem; /* .redondeado */
+  padding: 1.5rem 3rem;
+  border-radius: 1rem;
+  margin: 2.5rem 0rem;
   align-self: center;
-  flex: 1; /* Para que ocupen espacio similar */
+  flex: 1;
   max-width: 200px;
 
   &:hover {
-    background-color: #619800;
     transform: translateY(-1px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
+`;
 
-  /* Sobreescribe si se necesita un botón de submit diferente (aquí uso BotonVerde para ambos) */
-  &[type="submit"] {
-    /* Estilos específicos si el submit necesita un color o tamaño distinto */
+// 🔹 Botón verde
+export const BotonVerde = styled.button`
+  ${ButtonBase}
+  background-color: #71b100;
+
+  &:hover {
+    background-color: #619800;
   }
+`;
+
+// 🔹 Botón amarillo (ejemplo de variante)
+export const BotonNaranja = styled.button`
+  ${ButtonBase}
+  background-color: #c77808;
+
+  &:hover {
+    background-color: #a86106;
+  }
+`;
+
+// 🔹 Acciones superiores
+export const TopActions = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
 `;

@@ -196,3 +196,12 @@ input[type="radio"] {
     font-size: 1.4rem;
     color: #333;
 }
+
+@media (max-width: 480px) {
+  .form-container {
+    width: 90%;
+  }
+  .boton-verde {
+    width: 80%;
+  }
+}

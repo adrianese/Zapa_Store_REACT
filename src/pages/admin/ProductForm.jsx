@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { TopActions,  FormContainer,  } from "./ProductFormStyles";
 import Swal from "sweetalert2";
-// ❌ Eliminamos la importación del CSS: import "./ProductForm.css";
+//  Eliminamos la importación del CSS: import "./ProductForm.css";
 import {
-  FormContainer,
+  // FormContainer,
   FormGroup,
   Label,
   Input,
@@ -13,7 +14,8 @@ import {
   PreviewImage,
   FormActions,
   BotonVerde,
-} from "./ProductFormStyles"; // ✅ Importamos los estilos
+  BotonNaranja,
+} from "./ProductFormStyles"; //  Importamos los estilos
 
 const ProductForm = () => {
   const [product, setProduct] = useState({
@@ -198,6 +200,12 @@ const ProductForm = () => {
   return (
     // Reemplazo <div className="product-form-container"> por <FormContainer>
     <FormContainer>
+      <TopActions>
+        <BotonNaranja type="button" onClick={() => navigate(-1)}>
+          Volver
+        </BotonNaranja>
+      </TopActions>
+
       <h2>{id ? "Editar Producto" : "Crear Producto"}</h2>
       <form onSubmit={handleSubmit}>
         {/* Reemplazo <div className="form-group"> por <FormGroup> */}

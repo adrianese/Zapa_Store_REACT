@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import styled, { css } from "styled-components";
 import ProdCard from "../../components/admin/ProdCard";
 import { useAuth } from "../../context/AuthProvider";
-// ❌ Eliminamos la importación del CSS: import "./ProductList.css";
+// Eliminamos la importación del CSS: import "./ProductList.css";
 
 // ==========================================================
-// 🎨 DEFINICIÓN DE STYLED COMPONENTS
+// DEFINICIÓN DE STYLED COMPONENTS
 // ==========================================================
 
 // Estilo Base para el Contenedor Principal
@@ -70,7 +70,7 @@ const ProductosLista = styled.div`
 `;
 
 // ==========================================================
-// ⚛️ COMPONENTE PRODUCTLIST
+//  COMPONENTE PRODUCTLIST
 // ==========================================================
 
 const ProductList = () => {

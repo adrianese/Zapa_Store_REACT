@@ -3,9 +3,11 @@ Este proyecto, Zapa-Store-React, ha sido desarrollado exclusivamente con fines e
 No se recomienda su uso en aplicaciones reales sin una auditoría completa, pruebas rigurosas y fortalecimiento de seguridad.
 
 Sitio Web:
-https://react-proyecto-czfhznp11-adrianeses-projects.vercel.app/
+
+https://react-proyecto-5wof3mgyy-adrianeses-projects.vercel.app/
 
 Sitio Web:
+
 https://react-proyecto-nu.vercel.app/
 
 # Proyecto E-commerce con React
@@ -96,7 +98,9 @@ Página Register:
 Las opciones de Register  se realizaran con nombre, correo y password.
 Páginas Login: Las opciones de login solo correo y password.
     Como funciona el sistema: Al cargar un producto o mas al carritoModal tenemos la opción de registrarse o loguearse.
-    El Usuario o Cliente, se verificará en una base de datos de MOCKapi:
+    El Usuario o Cliente, se verificará en una base de datos de MOCKapi, que tiene los datos del registrado, 
+    su pedido con id y a su vez factura y otros datos:
+
     https://68e448c88e116898997b75e3.mockapi.io/api/productos/users
 ```
    "id": "2",
@@ -106,9 +110,11 @@ Páginas Login: Las opciones de login solo correo y password.
     "rol": "usuario",
     "pedidos": []
   ```    
-    Que  tiene los datos del registrado , su pedido con id y a su vez factura y otros datos .cuando el usuario este registrado y logueado tendrá la posibilidad de ver sus compras anteriores si existieran podrá habilitar la compra actual mediante un form donde se enviará para procesar.
+    Cuando el usuario esté registrado y logueado tendrá la posibilidad de ver sus compras anteriores, 
+    si existieran, podrá habilitar la compra actual mediante un form donde se enviará para procesar.
     
-     Como Admin se ingresará a través de /admin con correo y password genérico. admin@correo.com y admin. Al ingresar ira a un dashboard, donde podrá:
+     Como Admin se ingresará a través de /login con correo y password genérico:
+     admin@correo.com y pass admin. Al ingresar irá a un board, donde podrá:
      a- listar todos los productos , con la opción de borrar y actualizar datos desde la card del producto. 
      b- cargar un nuevo producto  y 
      c- ver todos los pedidos por id /factura/ usuario/ productos o pedidos historicos / fecha /total/ impuestos/ etc.
@@ -124,7 +130,6 @@ Los Productos:
     "disponible": true,
     "precio": 86500 },
 ```
----
 
 Autenticación básica (Login y Registro)
 Permitir que usuarios se registren, inicien sesión y se identifiquen para comprar.

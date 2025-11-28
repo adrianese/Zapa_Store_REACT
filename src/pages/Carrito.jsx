@@ -149,7 +149,7 @@ const Carrito = () => {
           </p>
 
           {!isAuthenticated ? (
-            <form onSubmit={handleLogin} className="formulario">
+            <form onSubmit={handleLogin} className="formulario form-container">
               <fieldset>
                 <h3 className="carrito-titulo">{t("cart.loginPrompt")}</h3>
 
@@ -179,7 +179,7 @@ const Carrito = () => {
               </fieldset>
             </form>
           ) : (
-            <form onSubmit={handleSubmit} className="formulario">
+            <form onSubmit={handleSubmit} className="formulario form-container">
               <fieldset>
                 <legend>{t("cart.confirmation")}</legend>
                 <p>

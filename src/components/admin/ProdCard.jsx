@@ -16,7 +16,9 @@ const ProdCard = ({ producto, onDelete }) => {
     materialesText,
   } = producto;
 
-  const modelo = imagen.replace(".jpg", "");
+  // Definir ruta segura de imagen
+  const imgSrc = imagen ? `/img/${imagen}` : "/img/default.png";
+  const modelo = imagen ? imagen.replace(".jpg", "") : "N/A";
 
   const handleDelete = () => {
     Swal.fire({
@@ -30,9 +32,9 @@ const ProdCard = ({ producto, onDelete }) => {
           <strong>Precio:</strong> $${precio?.toLocaleString("es-AR")}
         </div>
       `,
-      imageUrl: `/img/${imagen}`,
+      imageUrl: imgSrc, // ✅ usa la misma lógica de fallback
       imageWidth: 200,
-      imageAlt: nombre,
+      imageAlt: nombre || "Imagen por defecto",
       showCancelButton: true,
       confirmButtonColor: "#dc3545",
       cancelButtonColor: "#999",
@@ -50,7 +52,7 @@ const ProdCard = ({ producto, onDelete }) => {
           Swal.fire("Eliminado", "El producto fue borrado.", "success");
           if (onDelete) onDelete(id); // actualiza la lista si se pasa función
         } catch (error) {
-          Swal.fire("Error", "No se pudo borrar el producto.",{error});
+          Swal.fire("Error", "No se pudo borrar el producto.", "error");
         }
       }
     });
@@ -60,7 +62,11 @@ const ProdCard = ({ producto, onDelete }) => {
     <div className="prod-card">
       {/* Imagen */}
       <div className="prod-img">
-        <img src={`/img/${imagen}`} alt={nombre} />
+        <img
+          src={imgSrc}
+          alt={nombre || "Imagen por defecto"}
+          onError={(e) => (e.target.src = "/img/default.png")}
+        />
       </div>
 
       {/* Datos */}
@@ -113,7 +119,9 @@ const ProdCard = ({ producto, onDelete }) => {
 
       {/* Botones */}
       <div className="acciones-card">
-        <button onClick={() => navigate(`/admin/update/${id}`)}>✏️ Editar</button>
+        <button onClick={() => navigate(`/admin/update/${id}`)}>
+          ✏️ Editar
+        </button>
         <button onClick={handleDelete}>🗑️ Borrar</button>
       </div>
     </div>
