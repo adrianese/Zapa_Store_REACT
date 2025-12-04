@@ -1,8 +1,5 @@
-import React, { useState} from "react";
-
-
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
 import "./GuiaTallesModal.css";
 
 const datosTalles = [
@@ -32,11 +29,23 @@ const GuiaTallesModal = () => {
   const [abierto, setAbierto] = useState(false);
   const { t } = useTranslation();
 
+  // Efecto para cerrar automáticamente a los 10 segundos
+  useEffect(() => {
+    let timer;
+    if (abierto) {
+      timer = setTimeout(() => {
+        setAbierto(false);
+      }, 10000); // 10 segundos
+    }
+    return () => clearTimeout(timer);
+  }, [abierto]);
+
   return (
     <>
       <div className="boton-talles-contenedor">
-       <button className="boton-talles" onClick={() => setAbierto(true)}>
-          {t("guiaTalles.button")}</button>
+        <button className="boton-talles" onClick={() => setAbierto(true)}>
+          {t("guiaTalles.button")}
+        </button>
       </div>
 
       {abierto && (
@@ -46,6 +55,7 @@ const GuiaTallesModal = () => {
               ×
             </button>
             <h3 className="titulo-modal">{t("guiaTalles.title")}</h3>
+
             <div className="scroll-tabla">
               <table className="tabla-modal">
                 <thead>
@@ -76,5 +86,3 @@ const GuiaTallesModal = () => {
 };
 
 export default GuiaTallesModal;
-
-

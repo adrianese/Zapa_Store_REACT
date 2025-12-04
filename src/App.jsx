@@ -7,6 +7,7 @@ import UserLayout from "./layouts/UserLayout";
 import AdminLayout from "./layouts/AdminLayout";
 import PrivateRoute from "./routes/PrivateRoute";
 
+
 // Páginas públicas
 import Inicio from "./pages/Inicio";
 import Productos from "./pages/Productos";

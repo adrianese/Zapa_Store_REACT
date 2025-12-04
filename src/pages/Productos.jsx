@@ -6,6 +6,8 @@ import Buscador from "../components/Buscador";
 import ModalComparacion from "../components/ModalComparacion";
 import CarritoModal from "../components/CarritoModal";
 import GuiaTallesModal from "../components/GuiaTallesModal";
+import Paginador from "../components/Paginador"; 
+
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
 import "../components/ProductoCard.css";
@@ -14,7 +16,10 @@ import "../components/ProductoCard.css";
 const Productos = () => {
   const [productos, setProductos] = useState([]);
   const [productosFiltrados, setProductosFiltrados] = useState([]);
+  const [paginaActual, setPaginaActual] = useState(1); // estado de página
+  const itemsPorPagina = 8; // cantidad de productos por página
   const [seleccionados, setSeleccionados] = useState([]);
+
   const [mostrarModalComparacion, setMostrarModalComparacion] = useState(false);
   const [mostrarCarrito, setMostrarCarrito] = useState(false);
   const [mostrarFlecha, setMostrarFlecha] = useState(false);
@@ -112,13 +117,19 @@ const Productos = () => {
     seleccionados.includes(p.id)
   );
 
+  // Calcular productos visibles según página
+  const indexInicio = (paginaActual - 1) * itemsPorPagina;
+  const indexFin = indexInicio + itemsPorPagina;
+  const productosVisibles = productosFiltrados.slice(indexInicio, indexFin);
+
   return (
     <div className="contenedor seccion">
-      <Buscador productos={productos} onFiltrar={setProductosFiltrados} />
-    
+      <Buscador productos={productos} onFiltrar={setProductosFiltrados}  
+      resetPagina={() => setPaginaActual(1)} />
+
       <GuiaTallesModal />
       <div className="contenedor-anuncios">
-        {productosFiltrados.map((producto) => (
+        {productosVisibles.map((producto) => (
           <ProductoCard
             key={producto.id}
             producto={producto}
@@ -128,6 +139,13 @@ const Productos = () => {
           />
         ))}
       </div>
+
+      <Paginador
+        totalItems={productosFiltrados.length}
+        itemsPorPagina={itemsPorPagina}
+        paginaActual={paginaActual}
+        onPageChange={setPaginaActual}
+      />
       {seleccionados.length >= 2 && (
         <button
           className="boton-comparar-flotante"

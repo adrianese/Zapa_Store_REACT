@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./Buscador.css";
 
-const Buscador = ({ productos, onFiltrar }) => {
+const Buscador = ({ productos, onFiltrar, resetPagina }) => {
   const { t } = useTranslation();
 
   const [marcaSeleccionada, setMarcaSeleccionada] = useState("");
@@ -33,12 +33,14 @@ const Buscador = ({ productos, onFiltrar }) => {
     }
 
     onFiltrar(filtrados);
+    resetPagina(); // cada vez que cambian filtros, vuelve a página 1
   }, [
     marcaSeleccionada,
     actividadSeleccionada,
     ordenPrecio,
     productos,
     onFiltrar,
+    resetPagina,
   ]);
 
   return (
@@ -54,6 +56,7 @@ const Buscador = ({ productos, onFiltrar }) => {
             setActividadSeleccionada("");
             setOrdenPrecio("");
             onFiltrar(productos);
+             resetPagina();
           }}
         >
           {t("search.allProducts")}

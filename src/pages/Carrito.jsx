@@ -183,7 +183,7 @@ const Carrito = () => {
               <fieldset>
                 <legend>{t("cart.confirmation")}</legend>
                 <p>
-                  <strong>{t("cart.name")}:</strong> {usuario.nombre}
+                  <strong> 🧑‍💻{t("cart.name")}:</strong> {usuario.nombre}
                 </p>
                 <p>
                   <strong>📧 {t("cart.email")}:</strong> {usuario.email}
@@ -214,14 +214,12 @@ const Carrito = () => {
         </>
       )}
 
-      
-        <p className="link-text">
-          {t("cart.noAccount")}{" "}
-          <Link to="/register" className="boton-verde">
-            {t("cart.register")}
-          </Link>
-        </p>
-     
+      <p className="link-text">
+        {t("cart.noAccount")}{" "}
+        <Link to="/register" className="boton-verde">
+          {t("cart.register")}
+        </Link>
+      </p>
     </div>
   );
 };
