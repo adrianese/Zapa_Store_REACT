@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import "./Buscador.css";
 
-const Buscador = ({ productos, onFiltrar, resetPagina }) => {
+const Buscador = ({ productos, onFiltrar }) => {
   const { t } = useTranslation();
 
   const [marcaSeleccionada, setMarcaSeleccionada] = useState("");
   const [actividadSeleccionada, setActividadSeleccionada] = useState("");
   const [ordenPrecio, setOrdenPrecio] = useState("");
 
-  const [marcas, setMarcas] = useState([]);
-  const [actividades, setActividades] = useState([]);
+  // Memorizar marcas y actividades únicas
+  const marcas = useMemo(
+    () => [...new Set(productos.map((p) => p.nombre))],
+    [productos]
+  );
+  const actividades = useMemo(
+    () => [...new Set(productos.map((p) => p.actividad))],
+    [productos]
+  );
 
-  useEffect(() => {
-    const marcasUnicas = [...new Set(productos.map((p) => p.nombre))];
-    const actividadesUnicas = [...new Set(productos.map((p) => p.actividad))];
-    setMarcas(marcasUnicas);
-    setActividades(actividadesUnicas);
-  }, [productos]);
-
+  // Filtrado reactivo
   useEffect(() => {
     let filtrados = productos.filter(
       (p) =>
@@ -32,16 +33,22 @@ const Buscador = ({ productos, onFiltrar, resetPagina }) => {
       filtrados.sort((a, b) => b.precio - a.precio);
     }
 
+    // Aquí el padre puede resetear la página a 1
     onFiltrar(filtrados);
-    resetPagina(); // cada vez que cambian filtros, vuelve a página 1
   }, [
     marcaSeleccionada,
     actividadSeleccionada,
     ordenPrecio,
-    productos,
-    onFiltrar,
-    resetPagina,
+    productos
+  
   ]);
+
+  const resetFiltros = () => {
+    setMarcaSeleccionada("");
+    setActividadSeleccionada("");
+    setOrdenPrecio("");
+    onFiltrar(productos); // el padre se encarga de resetear la página
+  };
 
   return (
     <section className="formulario buscador">
@@ -49,16 +56,7 @@ const Buscador = ({ productos, onFiltrar, resetPagina }) => {
       <h3>{t("search.subtitle")}</h3>
 
       <div className="input-buscador">
-        <button
-          className="boton-verde boton-redondeado"
-          onClick={() => {
-            setMarcaSeleccionada("");
-            setActividadSeleccionada("");
-            setOrdenPrecio("");
-            onFiltrar(productos);
-             resetPagina();
-          }}
-        >
+        <button className="boton-verde boton-redondeado" onClick={resetFiltros}>
           {t("search.allProducts")}
         </button>
 
@@ -86,7 +84,7 @@ const Buscador = ({ productos, onFiltrar, resetPagina }) => {
             <option value="">{t("search.allActivities")}</option>
             {actividades.map((act) => (
               <option key={act} value={act}>
-                {act} {/* Se mantiene en inglés */}
+                {act}
               </option>
             ))}
           </select>
